@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { Routes, Route } from 'react-router-dom';
+
+// Import Components
+import Sidebar from './components/layout/Sidebar';
+
+// Import Pages
+import GeneratePalette from './pages/GeneratePalette';
+import GenerateScheme from './pages/GenerateScheme';
+import ImageUpload from './pages/ImageUpload';
+import Home from './pages/Home';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Sidebar />
+      <div style={{ marginLeft: '20%' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/generate-palette" element={<GeneratePalette />} />
+          <Route path="/image-upload" element={<ImageUpload />} />
+          <Route path="/generate-scheme" element={<GenerateScheme />} />
+        </Routes>
+      </div>
+    </QueryClientProvider>
   );
 }
 
