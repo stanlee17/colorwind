@@ -20,6 +20,35 @@ a {
   text-decoration: none;
 }
 
+.color-generator__heading {
+  font-weight: 800;
+}
+.color-generator__paragraph {
+  font-size: 1.1rem;
+}
+.color-generator__colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.color-generator__color {
+  padding: 1rem;
+  max-width: 300px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.color-generator__hex {
+  font-weight: bold;
+}
+.color-generator__settings svg {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.color-generator__settings svg:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
 .cw-btn {
   color: #ffffff;
   font-size: 1.1rem;
@@ -27,21 +56,6 @@ a {
   padding: 0.5rem 2rem;
   border-radius: 2rem;
   border: none;
-}
-
-.generate-palette__heading {
-  font-weight: 800;
-}
-.generate-palette__paragraph {
-  font-size: 1.1rem;
-}
-.generate-palette__colors {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-.generate-palette__color {
-  max-width: 300px;
-  min-height: 300px;
 }
 
 .sidebar {

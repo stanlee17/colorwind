@@ -1,51 +1,59 @@
 import { useQuery } from 'react-query';
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
 
 // Components
-import CWButton from '../components/common/CWButton';
-
-// Utils
-import { convertToRGB } from '../utils/utils';
+import ColorGenerator from '../components/features/ColorGenerator';
+// import ColorList from '../components/features/ColorList';
 
 const GeneratePalette = () => {
-  const { isLoading, error, data } = useColor();
+  const { isLoading, error, data, refetch } = useColor();
 
   function useColor() {
-    return useQuery('colorData', async () => {
-      const { data } = await axios.post(
-        'http://colormind.io/api/',
-        JSON.stringify({ model: 'default' })
-      );
-      return data;
-    });
+    return useQuery(
+      'colorData',
+      async () => {
+        const { data } = await axios.post(
+          'http://colormind.io/api/',
+          JSON.stringify({ model: 'default' })
+        );
+        return data.result;
+      },
+      {
+        refetchOnWindowFocus: false,
+        staleTime: 0,
+        cacheTime: 0,
+        refetchInterval: 0,
+      }
+    );
   }
 
-  if (isLoading) return 'Loading...';
+  // Refetches data when Spacebar is pressed
+  const handleSpacePress = useCallback(
+    (e) => {
+      if (e.key === ' ') {
+        refetch();
+      }
+    },
+    [refetch]
+  );
 
+  useEffect(() => {
+    document.addEventListener('keydown', handleSpacePress);
+    return () => {
+      document.removeEventListener('keydown', handleSpacePress);
+    };
+  }, [handleSpacePress]);
+
+  if (isLoading) return 'Loading...';
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <div className="generate-palette py-5">
       <Container>
-        <h1 className="generate-palette__heading">Color Generator</h1>
-        <p className="generate-palette__paragraph">
-          Press <b>spacebar</b> or click the <b>generate</b> button in order to
-          generate new color palettes
-        </p>
-        <div className="generate-palette__colors py-4">
-          {data.result.map((color, index) => {
-            return (
-              <div
-                key={index}
-                className="generate-palette__color"
-                style={{ backgroundColor: convertToRGB(color) }}
-              ></div>
-            );
-          })}
-        </div>
-        <CWButton>Generate</CWButton>
+        <ColorGenerator data={data} refetch={refetch} />
+        {/* <ColorList /> */}
       </Container>
     </div>
   );
