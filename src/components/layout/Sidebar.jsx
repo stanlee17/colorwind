@@ -15,12 +15,6 @@ const Sidebar = () => {
         <a href="/generate-palette" className="sidebar__link">
           Generate Palette
         </a>
-        <a href="/image-upload" className="sidebar__link">
-          Image Upload
-        </a>
-        <a href="/generate-scheme" className="sidebar__link">
-          Generate Scheme
-        </a>
       </div>
     </header>
   );

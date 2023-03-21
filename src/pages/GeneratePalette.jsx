@@ -22,9 +22,6 @@ const GeneratePalette = () => {
       },
       {
         refetchOnWindowFocus: false,
-        staleTime: 0,
-        cacheTime: 0,
-        refetchInterval: 0,
       }
     );
   }

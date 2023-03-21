@@ -28,13 +28,15 @@
   }
 
   &__settings {
+    display: flex;
+
     & svg {
       font-size: 1.4rem;
       cursor: pointer;
+    }
 
-      &:not(:last-child) {
-        margin-right: 0.5rem;
-      }
+    & div:not(:last-child) {
+      margin-right: 0.5rem;
     }
   }
 }

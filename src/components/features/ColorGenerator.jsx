@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IoLockOpen } from 'react-icons/io5';
-import { RiSettings3Fill, RiFileCopyLine } from 'react-icons/ri';
 
 // Components
 import CWButton from '../common/CWButton';
+import ColorPicker from './ColorPicker';
+import ColorCopy from './ColorCopy';
 
 // Utils
 import { rgbToHex } from '../../utils/utils';
 import { getContrast } from '../../utils/utils';
 
 const ColorGenerator = ({ data, refetch }) => {
+  console.log(data);
+
   return (
     <div className="color-generator">
       <h1 className="color-generator__heading">Color Generator</h1>
@@ -31,9 +34,11 @@ const ColorGenerator = ({ data, refetch }) => {
             >
               <h5 className="color-generator__hex">{hex}</h5>
               <div className="color-generator__settings">
-                <IoLockOpen />
-                <RiSettings3Fill />
-                <RiFileCopyLine />
+                <div>
+                  <IoLockOpen />
+                </div>
+                <ColorPicker hex={hex} />
+                <ColorCopy hex={hex} />
               </div>
             </div>
           );

@@ -2,7 +2,8 @@
 @use './base/base';
 
 // component imports
-@use './components/colorGenerator.scss';
+@use './components/colorGenerator';
+@use './components/colorPicker';
 @use './components/cwbutton';
 
 // layout imports

@@ -7,8 +7,6 @@ import Sidebar from './components/layout/Sidebar';
 
 // Import Pages
 import GeneratePalette from './pages/GeneratePalette';
-import GenerateScheme from './pages/GenerateScheme';
-import ImageUpload from './pages/ImageUpload';
 import Home from './pages/Home';
 
 const queryClient = new QueryClient();
@@ -21,8 +19,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/generate-palette" element={<GeneratePalette />} />
-          <Route path="/image-upload" element={<ImageUpload />} />
-          <Route path="/generate-scheme" element={<GenerateScheme />} />
         </Routes>
       </div>
     </QueryClientProvider>
