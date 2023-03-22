@@ -1,8 +1,9 @@
-import React from 'react';
-import { IoLockOpen } from 'react-icons/io5';
+import React, { useContext } from 'react';
+import { ColorsContext } from '../../pages/GeneratePalette';
 
 // Components
 import CWButton from '../common/CWButton';
+import ColorLock from './ColorLock';
 import ColorPicker from './ColorPicker';
 import ColorCopy from './ColorCopy';
 
@@ -10,8 +11,9 @@ import ColorCopy from './ColorCopy';
 import { rgbToHex } from '../../utils/utils';
 import { getContrast } from '../../utils/utils';
 
-const ColorGenerator = ({ data, refetch }) => {
-  console.log(data);
+const ColorGenerator = ({ refetch }) => {
+  const { colors, setColors } = useContext(ColorsContext);
+  // console.log(colors);
 
   return (
     <div className="color-generator">
@@ -21,8 +23,10 @@ const ColorGenerator = ({ data, refetch }) => {
         generate new color palettes
       </p>
       <div className="color-generator__colors py-4">
-        {data.map((color, index) => {
+        {colors.map((color, index) => {
           const hex = rgbToHex(color[0], color[1], color[2]);
+          // console.log(hex);
+
           return (
             <div
               key={index}
@@ -34,10 +38,8 @@ const ColorGenerator = ({ data, refetch }) => {
             >
               <h5 className="color-generator__hex">{hex}</h5>
               <div className="color-generator__settings">
-                <div>
-                  <IoLockOpen />
-                </div>
-                <ColorPicker hex={hex} />
+                <ColorLock hex={hex} />
+                <ColorPicker hex={hex} index={index} />
                 <ColorCopy hex={hex} />
               </div>
             </div>

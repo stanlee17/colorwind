@@ -1,14 +1,16 @@
 import { useQuery } from 'react-query';
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, createContext, useState } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
 
 // Components
 import ColorGenerator from '../components/features/ColorGenerator';
-// import ColorList from '../components/features/ColorList';
+
+export const ColorsContext = createContext();
 
 const GeneratePalette = () => {
-  const { isLoading, error, data, refetch } = useColor();
+  const [colors, setColors] = useState([]);
+  const { isLoading, error, refetch } = useColor();
 
   function useColor() {
     return useQuery(
@@ -22,6 +24,7 @@ const GeneratePalette = () => {
       },
       {
         refetchOnWindowFocus: false,
+        onSuccess: setColors,
       }
     );
   }
@@ -29,9 +32,7 @@ const GeneratePalette = () => {
   // Refetches data when Spacebar is pressed
   const handleSpacePress = useCallback(
     (e) => {
-      if (e.key === ' ') {
-        refetch();
-      }
+      if (e.key === ' ') refetch();
     },
     [refetch]
   );
@@ -49,8 +50,9 @@ const GeneratePalette = () => {
   return (
     <div className="generate-palette py-5">
       <Container>
-        <ColorGenerator data={data} refetch={refetch} />
-        {/* <ColorList /> */}
+        <ColorsContext.Provider value={{ colors, setColors }}>
+          <ColorGenerator refetch={refetch} />
+        </ColorsContext.Provider>
       </Container>
     </div>
   );
