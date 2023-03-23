@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { IoLockOpen, IoLockClosed } from 'react-icons/io5';
+import { ColorsContext } from '../../pages/GeneratePalette';
 
-const ColorLock = () => {
+const ColorLock = ({ hex, index }) => {
+  const { colors, setColors } = useContext(ColorsContext);
+  const [lock, setLock] = useState(false);
+
+  const handleClick = () => {
+    setColors(
+      colors.map((item) => {
+        if (item.id === index + 1) {
+          return { ...item, isLocked: !lock };
+        } else {
+          return item;
+        }
+      })
+    );
+
+    setLock(!lock);
+  };
+
   return (
-    <div>
-      <IoLockOpen />
-    </div>
+    <div onClick={handleClick}>{lock ? <IoLockClosed /> : <IoLockOpen />}</div>
   );
 };
 

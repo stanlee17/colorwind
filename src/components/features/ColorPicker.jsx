@@ -19,11 +19,16 @@ const ColorPicker = ({ hex, index }) => {
   };
 
   const handleColorPicker = (color) => {
-    let rgb = [color.rgb.r, color.rgb.g, color.rgb.b];
-    let items = [...colors];
-    items[index] = rgb;
+    setColors(
+      colors.map((item) => {
+        if (item.id === index + 1) {
+          return { ...item, color: color.hex.toUpperCase() };
+        } else {
+          return item;
+        }
+      })
+    );
 
-    setColors(items);
     setColor(color.hex);
   };
 

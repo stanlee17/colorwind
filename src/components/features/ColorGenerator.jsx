@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ColorsContext } from '../../pages/GeneratePalette';
 
 // Components
@@ -8,12 +8,10 @@ import ColorPicker from './ColorPicker';
 import ColorCopy from './ColorCopy';
 
 // Utils
-import { rgbToHex } from '../../utils/utils';
 import { getContrast } from '../../utils/utils';
 
 const ColorGenerator = ({ refetch }) => {
-  const { colors, setColors } = useContext(ColorsContext);
-  // console.log(colors);
+  const { colors } = useContext(ColorsContext);
 
   return (
     <div className="color-generator">
@@ -23,28 +21,23 @@ const ColorGenerator = ({ refetch }) => {
         generate new color palettes
       </p>
       <div className="color-generator__colors py-4">
-        {colors.map((color, index) => {
-          const hex = rgbToHex(color[0], color[1], color[2]);
-          // console.log(hex);
-
-          return (
-            <div
-              key={index}
-              className="color-generator__color"
-              style={{
-                backgroundColor: hex,
-                color: getContrast(hex),
-              }}
-            >
-              <h5 className="color-generator__hex">{hex}</h5>
-              <div className="color-generator__settings">
-                <ColorLock hex={hex} />
-                <ColorPicker hex={hex} index={index} />
-                <ColorCopy hex={hex} />
-              </div>
+        {colors.map((color, index) => (
+          <div
+            key={index}
+            className="color-generator__color"
+            style={{
+              backgroundColor: color.color,
+              color: getContrast(color.color),
+            }}
+          >
+            <h5 className="color-generator__hex">{color.color}</h5>
+            <div className="color-generator__settings">
+              <ColorLock hex={color.color} index={index} />
+              <ColorPicker hex={color.color} index={index} />
+              <ColorCopy hex={color.color} />
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
       <CWButton onClick={refetch}>Generate</CWButton>
     </div>
