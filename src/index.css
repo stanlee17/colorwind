@@ -20,6 +20,9 @@ a {
   text-decoration: none;
 }
 
+.color-generator {
+  margin-bottom: 5rem;
+}
 .color-generator__heading {
   font-weight: 800;
 }
@@ -33,7 +36,7 @@ a {
 .color-generator__color {
   padding: 1rem;
   max-width: 300px;
-  min-height: 300px;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -70,13 +73,47 @@ a {
   left: 0;
 }
 
+.colorsaved {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  cursor: pointer;
+}
+.colorsaved__wrapper {
+  background-color: #b9b9b9;
+}
+.colorsaved__name {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  margin: 0;
+}
+.colorsaved__colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.colorsaved__color {
+  min-height: 125px;
+  display: flex;
+}
+
 .cw-btn {
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   background-color: #38bdf8;
   padding: 0.5rem 2rem;
   border-radius: 2rem;
   border: none;
+}
+
+.home {
+  padding: 5rem 0;
+}
+.home h1 {
+  font-weight: bold;
+}
+.home p {
+  font-size: 1.2rem;
 }
 
 .sidebar {
@@ -86,6 +123,7 @@ a {
   flex-direction: column;
   position: fixed;
   overflow: auto;
+  background-color: #ffffff;
   border-right: 1px solid #d7d7d7;
 }
 .sidebar__logo {

@@ -5,6 +5,16 @@ export const rgbToHex = (r, g, b) => {
   );
 };
 
+export const hexToRgb = (hex) =>
+  hex
+    .replace(
+      /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
+      (m, r, g, b) => '#' + r + r + g + g + b + b
+    )
+    .substring(1)
+    .match(/.{2}/g)
+    .map((x) => parseInt(x, 16));
+
 export const getContrast = (hexcolor) => {
   // If a leading # is provided, remove it
   if (hexcolor.slice(0, 1) === '#') {
@@ -31,4 +41,19 @@ export const getContrast = (hexcolor) => {
 
   // Check contrast
   return yiq >= 128 ? 'black' : 'white';
+};
+
+export const colorInput = (colors) => {
+  let input = ['N', 'N', 'N', 'N', 'N'];
+
+  colors.map((color, index) => {
+    if (color.isLocked) {
+      input[index] = hexToRgb(color.color);
+      return input;
+    } else {
+      return input;
+    }
+  });
+
+  return input;
 };

@@ -8,6 +8,7 @@ import Sidebar from './components/layout/Sidebar';
 // Import Pages
 import GeneratePalette from './pages/GeneratePalette';
 import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/generate-palette" element={<GeneratePalette />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </QueryClientProvider>

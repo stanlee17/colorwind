@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CWButton = ({ onClick, children }) => {
+const CWButton = ({ onClick, children, className }) => {
   return (
-    <button onClick={onClick} className="cw-btn">
+    <button onClick={onClick} className={`cw-btn ${className}`}>
       {children}
     </button>
   );

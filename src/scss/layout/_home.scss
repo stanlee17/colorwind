@@ -1,1 +1,13 @@
 @use '../abstracts/' as *;
+
+.home {
+  padding: 5rem 0;
+
+  & h1 {
+    font-weight: bold;
+  }
+
+  & p {
+    font-size: 1.2rem;
+  }
+}
