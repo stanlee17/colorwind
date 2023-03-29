@@ -8,6 +8,10 @@
 @use './components/cwbutton';
 
 // layout imports
+@use './layout/footer';
 @use './layout/generatePalette';
 @use './layout/home';
 @use './layout/sidebar';
+
+// theme imports
+@use './themes/theme';

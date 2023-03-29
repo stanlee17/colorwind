@@ -1,0 +1,42 @@
+@use '../abstracts/' as *;
+
+#light {
+  background-color: rgb(244, 244, 244);
+}
+
+#dark {
+  background-color: #1f2933;
+  color: $white-color;
+}
+
+// Sidebar
+#dark .sidebar {
+  background-color: #323f4b;
+  color: $white-color;
+  border-right: none;
+}
+
+#dark .sidebar__link {
+  color: $white-color;
+
+  &:hover,
+  &:focus {
+    border-left: 5px solid #7dd3fc;
+    background-color: #3e4c59;
+  }
+}
+
+#dark .sidebar__logo {
+  color: $white-color;
+}
+
+// Button
+#dark .cw-btn {
+  background-color: #7dd3fc;
+  color: $black-color;
+}
+
+// Color Saved
+#dark .colorsaved__wrapper {
+  background-color: #323f4b;
+}

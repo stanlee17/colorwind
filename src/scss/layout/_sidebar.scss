@@ -11,10 +11,20 @@
   border-right: 1px solid #d7d7d7;
 
   &__logo {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 3rem 0;
+    color: $black-color;
+    font-weight: 600;
+    font-size: 1.3rem;
 
     & svg {
+      margin-right: 0.5rem;
+    }
+
+    &:hover {
+      color: $black-color;
     }
   }
 
