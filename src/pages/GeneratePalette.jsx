@@ -22,7 +22,11 @@ const GeneratePalette = () => {
     { id: 4, color: '', isLocked: false },
     { id: 5, color: '', isLocked: false },
   ]);
-  const [savedColors, setSavedColors] = useState([]);
+  const [savedColors, setSavedColors] = useState(() => {
+    const saved = localStorage.getItem('savedColors');
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
 
   // useQuery
   const { isLoading, error, refetch } = useQuery({
@@ -68,6 +72,8 @@ const GeneratePalette = () => {
 
   // Refetches data when Spacebar is pressed
   useEffect(() => {
+    localStorage.setItem('savedColors', JSON.stringify(savedColors));
+
     document.addEventListener('keydown', handleSpacePress);
     return () => {
       document.removeEventListener('keydown', handleSpacePress);

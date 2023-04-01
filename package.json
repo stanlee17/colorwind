@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject",
     "watch:sass": "sass --no-source-map --watch src/scss/main.scss:src/index.css",
     "build:sass": "sass --no-source-map src/scss/main.scss:src/index.css"
