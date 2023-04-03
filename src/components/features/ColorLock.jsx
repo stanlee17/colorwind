@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { IoLockOpen, IoLockClosed } from 'react-icons/io5';
-import { ColorsContext } from '../../pages/GeneratePalette';
+import { ColorsContext } from '../../pages/Colors';
 
 const ColorLock = ({ hex, index }) => {
   const { colors, setColors } = useContext(ColorsContext);

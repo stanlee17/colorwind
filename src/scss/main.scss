@@ -8,10 +8,9 @@
 @use './components/cwbutton';
 
 // layout imports
+@use './layout/colors';
 @use './layout/footer';
-@use './layout/generatePalette';
-@use './layout/home';
-@use './layout/sidebar';
+@use './layout/header';
 
 // theme imports
 @use './themes/theme';

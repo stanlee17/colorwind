@@ -1,13 +1,12 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { Routes, Route } from 'react-router-dom';
 
 // Import Components
-import Sidebar from './components/layout/Sidebar';
+import Layout from './components/layout/Layout';
 
 // Import Pages
-import GeneratePalette from './pages/GeneratePalette';
-import Home from './pages/Home';
+import Colors from './pages/Colors';
 import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
@@ -52,14 +51,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <div className="App" id={theme}>
-          <Sidebar />
-          <div style={{ marginLeft: '20%' }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/generate-palette" element={<GeneratePalette />} />
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Colors />} />
               <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
+            </Route>
+          </Routes>
         </div>
       </ThemeContext.Provider>
     </QueryClientProvider>

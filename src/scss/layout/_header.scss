@@ -1,0 +1,35 @@
+@use '../abstracts/' as *;
+
+.header {
+  background-color: $white-color;
+  padding: 1.2rem;
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    color: $black-color;
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    & svg {
+      margin-right: 0.5rem;
+    }
+
+    &:hover {
+      color: $black-color;
+    }
+  }
+
+  &-switch {
+    display: flex;
+    align-items: center;
+
+    & p {
+      margin-right: 1rem;
+    }
+  }
+}

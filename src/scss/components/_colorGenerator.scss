@@ -3,20 +3,12 @@
 .color-generator {
   margin-bottom: 5rem;
 
-  &__heading {
-    font-weight: 800;
-  }
-
-  &__paragraph {
-    font-size: 1.1rem;
-  }
-
-  &__colors {
+  &-colors {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
-  &__color {
+  &-color {
     padding: 1rem;
     max-width: 300px;
     min-height: 250px;
@@ -25,11 +17,11 @@
     justify-content: space-between;
   }
 
-  &__hex {
+  &-hex {
     font-weight: bold;
   }
 
-  &__settings {
+  &-settings {
     display: flex;
 
     & svg {

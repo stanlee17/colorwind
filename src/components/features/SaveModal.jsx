@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import { ColorsContext } from '../../pages/GeneratePalette';
+import { ColorsContext } from '../../pages/Colors';
 
 const SaveModal = (props) => {
   const { colors, savedColors, setSavedColors } = useContext(ColorsContext);

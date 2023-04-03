@@ -13,7 +13,7 @@ import { apiBaseUrl } from '../services/apis';
 
 export const ColorsContext = createContext();
 
-const GeneratePalette = () => {
+const Colors = () => {
   // Initial States
   const [colors, setColors] = useState([
     { id: 1, color: '', isLocked: false },
@@ -22,6 +22,7 @@ const GeneratePalette = () => {
     { id: 4, color: '', isLocked: false },
     { id: 5, color: '', isLocked: false },
   ]);
+
   const [savedColors, setSavedColors] = useState(() => {
     const saved = localStorage.getItem('savedColors');
     const initialValue = JSON.parse(saved);
@@ -51,8 +52,8 @@ const GeneratePalette = () => {
   function onSuccessFetch(data) {
     // Convert api data from rgb to hex colors
     let hexColors = [];
-    data.map((item) => {
-      hexColors.push(rgbToHex(item[0], item[1], item[2]));
+    data.map((rgb) => {
+      hexColors.push(rgbToHex(rgb[0], rgb[1], rgb[2]));
       return hexColors;
     });
     // Store hex colors to colors array object color state
@@ -63,6 +64,7 @@ const GeneratePalette = () => {
     );
   }
 
+  // Refetches data when Spacebar is pressed
   const handleSpacePress = useCallback(
     (e) => {
       if (e.key === ' ') refetch();
@@ -70,26 +72,19 @@ const GeneratePalette = () => {
     [refetch]
   );
 
-  // Refetches data when Spacebar is pressed
   useEffect(() => {
     localStorage.setItem('savedColors', JSON.stringify(savedColors));
-
     document.addEventListener('keydown', handleSpacePress);
     return () => {
       document.removeEventListener('keydown', handleSpacePress);
     };
   }, [handleSpacePress, savedColors]);
 
-  if (isLoading) return <div style={{ minHeight: '100vh' }}>Loading...</div>;
-  if (error)
-    return (
-      <div style={{ minHeight: '100vh' }}>
-        `An error has occurred: ${error.message}`
-      </div>
-    );
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>`An error has occurred: ${error.message}`</div>;
 
   return (
-    <div className="generate-palette py-5">
+    <div className="colors py-5">
       <Container>
         <ColorsContext.Provider
           value={{ colors, setColors, savedColors, setSavedColors }}
@@ -102,4 +97,4 @@ const GeneratePalette = () => {
   );
 };
 
-export default GeneratePalette;
+export default Colors;

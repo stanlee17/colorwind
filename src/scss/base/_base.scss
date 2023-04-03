@@ -13,10 +13,26 @@ body {
   line-height: 1.5;
 }
 
+p {
+  margin: 0;
+}
+
 img {
   width: 100%;
 }
 
 a {
   text-decoration: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-theme {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  flex: 1;
 }

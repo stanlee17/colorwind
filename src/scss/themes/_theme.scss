@@ -10,23 +10,13 @@
 }
 
 // Sidebar
-#dark .sidebar {
+#dark .header {
   background-color: #323f4b;
   color: $white-color;
   border-right: none;
 }
 
-#dark .sidebar__link {
-  color: $white-color;
-
-  &:hover,
-  &:focus {
-    border-left: 5px solid #7dd3fc;
-    background-color: #3e4c59;
-  }
-}
-
-#dark .sidebar__logo {
+#dark .header-logo {
   color: $white-color;
 }
 
@@ -37,10 +27,14 @@
 }
 
 // Color Saved
-#dark .colorsaved__wrapper {
+#dark .color-saved-wrapper {
   background-color: #323f4b;
 }
 
-#dark .color-generator__heading {
+#dark .color-generator-heading {
   color: #7dd3fc;
+}
+
+#dark .footer {
+  background-color: #323f4b;
 }

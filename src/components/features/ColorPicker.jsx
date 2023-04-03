@@ -2,7 +2,7 @@ import React, { useState, Fragment, useContext } from 'react';
 import { SketchPicker } from 'react-color';
 import { RiSettings3Fill } from 'react-icons/ri';
 
-import { ColorsContext } from '../../pages/GeneratePalette';
+import { ColorsContext } from '../../pages/Colors';
 
 const ColorPicker = ({ hex, index }) => {
   const { colors, setColors } = useContext(ColorsContext);
@@ -40,11 +40,8 @@ const ColorPicker = ({ hex, index }) => {
 
       {display && (
         <div className="color-picker">
-          <div className="color-picker__wrapper">
-            <div
-              className="color-picker__wrapper--close"
-              onClick={() => handleClose()}
-            />
+          <div className="color-picker-wrapper">
+            <div className="color-picker-close" onClick={() => handleClose()} />
             <SketchPicker color={color} onChange={handleColorPicker} />
           </div>
         </div>

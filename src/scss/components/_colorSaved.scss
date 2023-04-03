@@ -1,29 +1,29 @@
 @use '../abstracts/' as *;
 
-.colorsaved {
+.color-saved {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
   row-gap: 2rem;
   cursor: pointer;
 
-  &__wrapper {
+  &-wrapper {
     background-color: #d6d6d6;
   }
 
-  &__name {
+  &-name {
     font-size: 1.2rem;
     font-weight: 500;
     padding: 0.5rem 1rem;
     margin: 0;
   }
 
-  &__colors {
+  &-colors {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 
-  &__color {
+  &-color {
     min-height: 125px;
     display: flex;
   }

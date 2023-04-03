@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { ColorsContext } from '../../pages/GeneratePalette';
+import { ColorsContext } from '../../pages/Colors';
 
 // Components
 import CWButton from '../common/CWButton';
@@ -17,24 +17,19 @@ const ColorGenerator = ({ refetch }) => {
 
   return (
     <div className="color-generator">
-      <h1 className="color-generator__heading">Color Generator</h1>
-      <p className="color-generator__paragraph">
-        Press <b>spacebar</b> or click the <b>generate</b> button in order to
-        generate new color palettes
-      </p>
-      <div className="color-generator__colors py-4">
+      <div className="color-generator-colors py-4">
         {colors.map((color, index) => {
           return (
             <div
               key={index}
-              className="color-generator__color"
+              className="color-generator-color"
               style={{
                 backgroundColor: color.color,
                 color: getContrast(color.color),
               }}
             >
-              <h5 className="color-generator__hex">{color.color}</h5>
-              <div className="color-generator__settings">
+              <h5 className="color-generator-hex">{color.color}</h5>
+              <div className="color-generator-settings">
                 <ColorLock hex={color.color} index={index} />
                 <ColorPicker hex={color.color} index={index} />
                 <ColorCopy hex={color.color} />
