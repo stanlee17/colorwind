@@ -1,0 +1,9 @@
+@use '../abstracts/' as *;
+
+.message {
+  margin-top: 0.5rem;
+
+  &-error {
+    color: #f13535;
+  }
+}

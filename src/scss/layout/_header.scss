@@ -3,6 +3,7 @@
 .header {
   background-color: $white-color;
   padding: 1.2rem;
+  border-bottom: 1px solid $border-light;
 
   &-wrapper {
     display: flex;

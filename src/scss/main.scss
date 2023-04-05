@@ -5,7 +5,9 @@
 @use './components/colorGenerator';
 @use './components/colorPicker';
 @use './components/colorSaved';
-@use './components/cwbutton';
+@use './components/colorbutton';
+@use './components/message';
+@use './components/saveModal';
 
 // layout imports
 @use './layout/colors';

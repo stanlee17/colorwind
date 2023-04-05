@@ -1,6 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ColorsContext } from '../../pages/Colors';
+
+// Common
+import Message from '../common/Message';
 
 const SaveModal = (props) => {
   const { colors, savedColors, setSavedColors } = useContext(ColorsContext);
@@ -9,7 +12,7 @@ const SaveModal = (props) => {
 
   const handleTextChange = (e) => {
     const { value } = e.target;
-    setName(value);
+    setName(value.toLowerCase());
   };
 
   const handleSubmit = (e) => {
@@ -46,18 +49,18 @@ const SaveModal = (props) => {
       <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Name of your color palette
+            Save Palette
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3">
-            <Form.Label>Name:</Form.Label>
+            <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter name"
+              placeholder="My new palette"
               onChange={handleTextChange}
             />
-            <div className="text-danger">{error}</div>
+            {error && <Message variant="error">{error}</Message>}
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>

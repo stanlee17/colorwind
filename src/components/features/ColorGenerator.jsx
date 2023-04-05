@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { ColorsContext } from '../../pages/Colors';
+import { RiHeartLine } from 'react-icons/ri';
+import { TfiExport } from 'react-icons/tfi';
 
 // Components
-import CWButton from '../common/CWButton';
+import ColorButton from '../common/ColorButton';
 import ColorLock from './ColorLock';
 import ColorPicker from './ColorPicker';
 import ColorCopy from './ColorCopy';
@@ -38,12 +40,26 @@ const ColorGenerator = ({ refetch }) => {
           );
         })}
       </div>
-      <CWButton onClick={refetch} className="me-3">
-        Generate
-      </CWButton>
-      <CWButton className="bg-success" onClick={() => setModalShow(true)}>
-        Save
-      </CWButton>
+      <div className="color-generator-btn">
+        <div className="color-generator-btn-generate">
+          <ColorButton onClick={refetch} className="me-3">
+            Generate
+          </ColorButton>
+          or <strong>spacebar</strong> to generate new palettes
+        </div>
+        <div className="color-generator-btn-secondary">
+          <ColorButton secondary className="me-3" icon={<TfiExport />}>
+            Export
+          </ColorButton>
+          <ColorButton
+            secondary
+            icon={<RiHeartLine />}
+            onClick={() => setModalShow(true)}
+          >
+            Save
+          </ColorButton>
+        </div>
+      </div>
       <SaveModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );

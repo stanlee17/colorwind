@@ -37,6 +37,7 @@ a {
 }
 
 .color-generator {
+  position: relative;
   margin-bottom: 5rem;
 }
 .color-generator-colors {
@@ -63,6 +64,10 @@ a {
 }
 .color-generator-settings div:not(:last-child) {
   margin-right: 0.5rem;
+}
+.color-generator-btn {
+  display: flex;
+  justify-content: space-between;
 }
 
 .color-picker {
@@ -91,7 +96,7 @@ a {
   cursor: pointer;
 }
 .color-saved-wrapper {
-  background-color: #d6d6d6;
+  background-color: #f7f7f8;
 }
 .color-saved-name {
   font-size: 1.2rem;
@@ -108,24 +113,65 @@ a {
   display: flex;
 }
 
-.cw-btn {
+.color-btn {
   color: #ffffff;
-  font-size: 1.2rem;
   background-color: #38bdf8;
-  padding: 0.5rem 2rem;
+  padding: 0.6rem 2.2rem;
+  font-size: 1.1rem;
   border-radius: 2rem;
   border: none;
+  transition: all 0.2s ease-in-out;
+}
+.color-btn svg {
+  font-size: 1.3rem;
+  margin-right: 2px;
+}
+.color-btn:hover {
+  background-color: #42c6ff;
+  transform: scale(1.05);
+}
+.color-btn:active {
+  background-color: #38bdf8;
+}
+
+.color-btn-secondary {
+  border: 1px solid #333333;
+  color: #333333;
+  padding: 0.6rem 2rem;
+  border-radius: 2rem;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+}
+.color-btn-secondary svg {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+.color-btn-secondary:hover {
+  transform: scale(1.05);
+}
+
+.color-btn-right {
+  position: absolute;
+  right: 0;
+}
+
+.message {
+  margin-top: 0.5rem;
+}
+.message-error {
+  color: #f13535;
 }
 
 .footer {
   padding: 1.2rem;
   text-align: center;
-  background-color: #d6d6d6;
+  background-color: #f7f7f8;
 }
 
 .header {
   background-color: #ffffff;
   padding: 1.2rem;
+  border-bottom: 1px solid #e0e0e0;
 }
 .header-wrapper {
   display: flex;
@@ -152,7 +198,7 @@ a {
 }
 
 #light {
-  background-color: rgb(244, 244, 244);
+  background-color: #ffffff;
 }
 
 #dark {

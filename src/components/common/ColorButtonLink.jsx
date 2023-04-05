@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CWButtonLink = ({ onClick, children, url }) => {
+const ColorButtonLink = ({ onClick, children, url }) => {
   return (
     <Link to={url} onClick={onClick} className="cw-btn">
       {children}
@@ -9,4 +9,4 @@ const CWButtonLink = ({ onClick, children, url }) => {
   );
 };
 
-export default CWButtonLink;
+export default ColorButtonLink;

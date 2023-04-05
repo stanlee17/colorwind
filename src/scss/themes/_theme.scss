@@ -1,7 +1,7 @@
 @use '../abstracts/' as *;
 
 #light {
-  background-color: rgb(244, 244, 244);
+  background-color: $white-color;
 }
 
 #dark {
