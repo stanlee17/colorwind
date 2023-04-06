@@ -3,7 +3,6 @@ import { ColorsContext } from '../../pages/Colors';
 
 const ColorSaved = () => {
   const { savedColors } = useContext(ColorsContext);
-  console.log(savedColors);
 
   return (
     <div className="color-saved">

@@ -56,10 +56,15 @@ const Colors = () => {
       hexColors.push(rgbToHex(rgb[0], rgb[1], rgb[2]));
       return hexColors;
     });
-    // Store hex colors to colors array object color state
+
+    // Store hex colors to colors array object color state & check for locked colors
     setColors(
       colors.map((color, index) => {
-        return { ...color, color: hexColors[index] };
+        if (color.isLocked) {
+          return Object.freeze(color);
+        } else {
+          return { ...color, color: hexColors[index] };
+        }
       })
     );
   }
@@ -74,6 +79,7 @@ const Colors = () => {
 
   useEffect(() => {
     localStorage.setItem('savedColors', JSON.stringify(savedColors));
+
     document.addEventListener('keydown', handleSpacePress);
     return () => {
       document.removeEventListener('keydown', handleSpacePress);

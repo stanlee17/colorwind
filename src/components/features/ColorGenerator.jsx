@@ -16,6 +16,18 @@ import { getContrast } from '../../utils/utils';
 const ColorGenerator = ({ refetch }) => {
   const [modalShow, setModalShow] = useState(false);
   const { colors } = useContext(ColorsContext);
+  console.log(colors);
+
+  // function colorLocked(colors) {
+  //   colors.forEach((color) => {
+  //     if (color.isLocked) {
+  //       Object.freeze(color.color);
+  //       return;
+  //     }
+  //   });
+  // }
+
+  // colorLocked(colors);
 
   return (
     <div className="color-generator">
