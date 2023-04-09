@@ -69,10 +69,12 @@ const Colors = () => {
     );
   }
 
-  // Refetches data when Spacebar is pressed
+  // Refetches data when Spacebar is pressed but will not work when typing an input value
   const handleSpacePress = useCallback(
     (e) => {
-      if (e.key === ' ') refetch();
+      if (e.target instanceof HTMLInputElement) {
+        return;
+      } else if (e.key === ' ') refetch();
     },
     [refetch]
   );

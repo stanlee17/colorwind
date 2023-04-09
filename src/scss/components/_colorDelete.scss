@@ -1,0 +1,7 @@
+@use '../abstracts/' as *;
+
+.color-delete {
+  font-size: 1.2rem;
+  color: $red-color;
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { ColorsContext } from '../../pages/Colors';
 
@@ -7,6 +7,7 @@ import Message from '../common/Message';
 
 const SaveModal = (props) => {
   const { colors, savedColors, setSavedColors } = useContext(ColorsContext);
+  const inputRef = useRef(null);
   const [name, setName] = useState('');
   const [error, setError] = useState('');
 
@@ -57,8 +58,10 @@ const SaveModal = (props) => {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
+              ref={inputRef}
               placeholder="My new palette"
               onChange={handleTextChange}
+              autoFocus
             />
             {error && <Message variant="error">{error}</Message>}
           </Form.Group>

@@ -70,6 +70,12 @@ a {
   justify-content: space-between;
 }
 
+.color-delete {
+  font-size: 1.2rem;
+  color: #ef4444;
+  cursor: pointer;
+}
+
 .color-picker {
   position: relative;
 }
@@ -96,17 +102,12 @@ a {
 }
 .color-saved-wrapper {
   background-color: #f7f7f8;
-  cursor: pointer;
 }
 .color-saved-content {
   display: flex;
   align-items: center;
-  padding: 0.7rem 1.5rem;
+  padding: 0.7rem 1.2rem;
   justify-content: space-between;
-}
-.color-saved-content svg {
-  font-size: 1.2rem;
-  color: grey;
 }
 .color-saved-name {
   font-size: 1.1rem;
@@ -115,6 +116,7 @@ a {
 .color-saved-colors {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  cursor: pointer;
 }
 .color-saved-color {
   min-height: 125px;

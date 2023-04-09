@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { ColorsContext } from '../../pages/Colors';
-import { FaTrash } from 'react-icons/fa';
+
+// Components
+import ColorDelete from './ColorDelete';
 
 const ColorSaved = () => {
   const { colors, setColors, savedColors } = useContext(ColorsContext);
 
-  const handlePalette = (id) => {
+  const handleSaved = (id) => {
     const selectedPalette = savedColors.find((color) => color.id === id);
-    let allColors = selectedPalette.colors;
     setColors(
       colors.map((color, index) => {
-        return { ...color, color: allColors[index] };
+        return { ...color, color: selectedPalette.colors[index] };
       })
     );
   };
@@ -20,16 +21,15 @@ const ColorSaved = () => {
       {savedColors &&
         savedColors.map((color) => {
           return (
-            <div
-              className="color-saved-wrapper"
-              key={color.id}
-              onClick={() => handlePalette(color.id)}
-            >
+            <div className="color-saved-wrapper" key={color.id}>
               <div className="color-saved-content">
                 <p className="color-saved-name">{color.name}</p>
-                <FaTrash />
+                <ColorDelete id={color.id} />
               </div>
-              <div className="color-saved-colors">
+              <div
+                className="color-saved-colors"
+                onClick={() => handleSaved(color.id)}
+              >
                 <div
                   className="color-saved-color"
                   style={{

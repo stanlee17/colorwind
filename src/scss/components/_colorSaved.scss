@@ -8,19 +8,13 @@
 
   &-wrapper {
     background-color: $bg-light;
-    cursor: pointer;
   }
 
   &-content {
     display: flex;
     align-items: center;
-    padding: 0.7rem 1.5rem;
+    padding: 0.7rem 1.2rem;
     justify-content: space-between;
-
-    & svg {
-      font-size: 1.2rem;
-      color: grey;
-    }
   }
 
   &-name {
@@ -31,6 +25,7 @@
   &-colors {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    cursor: pointer;
   }
 
   &-color {
