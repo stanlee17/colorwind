@@ -32,10 +32,10 @@ const SaveModal = (props) => {
       id: savedColors.length + 1,
       name,
       colors: items,
-      isLocked: false,
     };
 
     props.onHide();
+    setError('');
     return setSavedColors([...savedColors, newItems]);
   };
 

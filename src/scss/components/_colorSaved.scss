@@ -5,17 +5,27 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
   row-gap: 2rem;
-  cursor: pointer;
 
   &-wrapper {
     background-color: $bg-light;
+    cursor: pointer;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1.5rem;
+    justify-content: space-between;
+
+    & svg {
+      font-size: 1.2rem;
+      color: grey;
+    }
   }
 
   &-name {
-    font-size: 1.2rem;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
   }
 
   &-colors {

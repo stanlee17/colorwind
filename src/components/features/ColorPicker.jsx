@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useContext } from 'react';
 import { SketchPicker } from 'react-color';
-import { RiSettings3Fill } from 'react-icons/ri';
+import { IoOptions } from 'react-icons/io5';
 
 import { ColorsContext } from '../../pages/Colors';
 
@@ -35,7 +35,7 @@ const ColorPicker = ({ hex, index }) => {
   return (
     <Fragment>
       <div onClick={() => handleClick()}>
-        <RiSettings3Fill />
+        <IoOptions />
       </div>
 
       {display && (
