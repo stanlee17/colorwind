@@ -48,9 +48,9 @@ const ColorGenerator = ({ refetch }) => {
           or <strong>spacebar</strong> to generate new palettes
         </div>
         <div className="color-generator-btn-secondary">
-          <ColorButton secondary className="me-3" icon={<TfiExport />}>
+          {/* <ColorButton secondary className="me-3" icon={<TfiExport />}>
             Export
-          </ColorButton>
+          </ColorButton> */}
           <ColorButton
             secondary
             icon={<RiHeartLine />}

@@ -8,6 +8,8 @@
   border-radius: 2rem;
   border: none;
   transition: all 0.2s ease-in-out;
+  outline: none;
+  font-weight: 500;
 
   & svg {
     font-size: 1.3rem;
@@ -15,7 +17,6 @@
   }
 
   &:hover {
-    background-color: $btn-primary-hover;
     transform: scale(1.05);
   }
 
@@ -31,6 +32,7 @@
   border-radius: 2rem;
   transition: all 0.2s ease-in-out;
   background-color: transparent;
+  outline: none;
 
   & svg {
     font-size: 1.3rem;

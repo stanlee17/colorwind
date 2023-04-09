@@ -38,7 +38,7 @@ a {
 
 .color-generator {
   position: relative;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 .color-generator-colors {
   display: grid;
@@ -71,7 +71,7 @@ a {
 }
 
 .color-delete {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #ef4444;
   cursor: pointer;
 }
@@ -96,9 +96,13 @@ a {
 
 .color-saved {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 2rem;
   row-gap: 2rem;
+}
+.color-saved-heading {
+  font-weight: 800;
+  margin-bottom: 2rem;
 }
 .color-saved-wrapper {
   background-color: #f7f7f8;
@@ -106,20 +110,20 @@ a {
 .color-saved-content {
   display: flex;
   align-items: center;
-  padding: 0.7rem 1.2rem;
+  padding: 0.6rem 1.1rem;
   justify-content: space-between;
 }
 .color-saved-name {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: capitalize;
 }
 .color-saved-colors {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
   cursor: pointer;
 }
 .color-saved-color {
-  min-height: 125px;
+  min-height: 60px;
   display: flex;
 }
 
@@ -131,13 +135,14 @@ a {
   border-radius: 2rem;
   border: none;
   transition: all 0.2s ease-in-out;
+  outline: none;
+  font-weight: 500;
 }
 .color-btn svg {
   font-size: 1.3rem;
   margin-right: 2px;
 }
 .color-btn:hover {
-  background-color: #42c6ff;
   transform: scale(1.05);
 }
 .color-btn:active {
@@ -151,6 +156,7 @@ a {
   border-radius: 2rem;
   transition: all 0.2s ease-in-out;
   background-color: transparent;
+  outline: none;
 }
 .color-btn-secondary svg {
   font-size: 1.3rem;
@@ -212,33 +218,38 @@ a {
 }
 
 #dark {
-  background-color: #1f2933;
+  background-color: #121212;
   color: #ffffff;
 }
 
+#dark .color-btn {
+  background-color: #bae6fd;
+  color: #161616;
+}
+
+#dark .color-btn-secondary {
+  border: 1px solid #fef08a;
+  color: #fef08a;
+}
+
+#dark .color-delete {
+  color: #fca5a5;
+}
+
 #dark .header {
-  background-color: #323f4b;
+  background-color: #1f1f1f;
   color: #ffffff;
-  border-right: none;
+  border-bottom: none;
 }
 
 #dark .header-logo {
   color: #ffffff;
 }
 
-#dark .cw-btn {
-  background-color: #7dd3fc;
-  color: #161616;
-}
-
 #dark .color-saved-wrapper {
-  background-color: #323f4b;
-}
-
-#dark .color-generator-heading {
-  color: #7dd3fc;
+  background-color: #1f1f1f;
 }
 
 #dark .footer {
-  background-color: #323f4b;
+  background-color: #1f1f1f;
 }

@@ -2,9 +2,14 @@
 
 .color-saved {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 2rem;
   row-gap: 2rem;
+
+  &-heading {
+    font-weight: 800;
+    margin-bottom: 2rem;
+  }
 
   &-wrapper {
     background-color: $bg-light;
@@ -13,23 +18,23 @@
   &-content {
     display: flex;
     align-items: center;
-    padding: 0.7rem 1.2rem;
+    padding: 0.6rem 1.1rem;
     justify-content: space-between;
   }
 
   &-name {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: capitalize;
   }
 
   &-colors {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
     cursor: pointer;
   }
 
   &-color {
-    min-height: 125px;
+    min-height: 60px;
     display: flex;
   }
 }
