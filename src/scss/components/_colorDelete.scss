@@ -1,7 +1,11 @@
 @use '../abstracts/' as *;
 
 .color-delete {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: $red-color;
   cursor: pointer;
+
+  @include devices(tablet) {
+    font-size: 1.2rem;
+  }
 }

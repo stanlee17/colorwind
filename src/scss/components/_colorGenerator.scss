@@ -38,5 +38,59 @@
   &-btn {
     display: flex;
     justify-content: space-between;
+
+    &-text {
+      display: inline-block;
+    }
+  }
+
+  @include devices(laptop) {
+    &-colors {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    &-color {
+      max-width: 250px;
+      min-height: 200px;
+    }
+
+    &-hex {
+      font-size: 1.2rem;
+    }
+
+    &-settings {
+      & svg {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  @include devices(tablet) {
+    &-colors {
+      display: block;
+    }
+
+    &-color {
+      max-width: 100%;
+      min-height: 250px;
+    }
+
+    &-settings {
+      & svg {
+        font-size: 1.3rem;
+      }
+    }
+
+    &-btn {
+      display: block;
+
+      &-text {
+        display: none;
+      }
+
+      & div:not(:last-of-type) {
+        margin-bottom: 1rem;
+      }
+    }
   }
 }

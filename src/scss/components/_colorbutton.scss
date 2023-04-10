@@ -23,12 +23,17 @@
   &:active {
     background-color: $primary-color;
   }
+
+  @include devices(tablet) {
+    min-width: 100%;
+    padding: 0.8rem 2.2rem;
+  }
 }
 
 .color-btn-secondary {
   border: 1px solid $btn-secondary-light;
   color: $btn-secondary-light;
-  padding: 0.6rem 2rem;
+  padding: 0.6rem 2.2rem;
   border-radius: 2rem;
   transition: all 0.2s ease-in-out;
   background-color: transparent;
@@ -42,9 +47,9 @@
   &:hover {
     transform: scale(1.05);
   }
-}
 
-.color-btn-right {
-  position: absolute;
-  right: 0;
+  @include devices(tablet) {
+    min-width: 100%;
+    padding: 0.8rem 2.2rem;
+  }
 }

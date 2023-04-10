@@ -20,7 +20,7 @@ const ColorSaved = () => {
     <Fragment>
       <h3 className="color-saved-heading">Library</h3>
       <div className="color-saved">
-        {savedColors &&
+        {savedColors.length ? (
           savedColors.map((color) => {
             return (
               <div className="color-saved-wrapper" key={color.id}>
@@ -65,7 +65,12 @@ const ColorSaved = () => {
                 </div>
               </div>
             );
-          })}
+          })
+        ) : (
+          <div className="color-saved-empty">
+            Your saved palettes will appear here.
+          </div>
+        )}
       </div>
     </Fragment>
   );

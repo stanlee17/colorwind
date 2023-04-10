@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { ColorsContext } from '../../pages/Colors';
 import { RiHeartLine } from 'react-icons/ri';
-import { TfiExport } from 'react-icons/tfi';
 
 // Components
 import ColorButton from '../common/ColorButton';
@@ -45,12 +44,11 @@ const ColorGenerator = ({ refetch }) => {
           <ColorButton onClick={refetch} className="me-3">
             Generate
           </ColorButton>
-          or <strong>spacebar</strong> to generate new palettes
+          <p className="color-generator-btn-text">
+            or <strong>spacebar</strong> to generate new palettes
+          </p>
         </div>
         <div className="color-generator-btn-secondary">
-          {/* <ColorButton secondary className="me-3" icon={<TfiExport />}>
-            Export
-          </ColorButton> */}
           <ColorButton
             secondary
             icon={<RiHeartLine />}

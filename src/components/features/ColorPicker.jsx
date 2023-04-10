@@ -6,10 +6,11 @@ import { ColorsContext } from '../../pages/Colors';
 
 const ColorPicker = ({ hex, index }) => {
   const { colors, setColors } = useContext(ColorsContext);
-  const [color, setColor] = useState(hex);
+  const [color, setColor] = useState('');
   const [display, setDisplay] = useState(false);
 
   const handleClick = () => {
+    setColor(hex);
     setDisplay(!display);
   };
 
@@ -31,7 +32,7 @@ const ColorPicker = ({ hex, index }) => {
     setColor(color.hex);
   };
 
-  console.log(color);
+  console.log(hex);
 
   return (
     <Fragment>

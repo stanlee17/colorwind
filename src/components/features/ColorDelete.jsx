@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ColorsContext } from '../../pages/Colors';
-import { FaTrashAlt } from 'react-icons/fa';
+import { TfiTrash } from 'react-icons/tfi';
 
 const ColorDelete = ({ id }) => {
   const { setSavedColors } = useContext(ColorsContext);
@@ -10,7 +10,7 @@ const ColorDelete = ({ id }) => {
 
   return (
     <div className="color-delete" onClick={() => handleDelete(id)}>
-      <FaTrashAlt />
+      <TfiTrash />
     </div>
   );
 };

@@ -2,7 +2,7 @@
 
 .color-saved {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 2rem;
   row-gap: 2rem;
 
@@ -23,7 +23,6 @@
   }
 
   &-name {
-    font-size: 0.9rem;
     text-transform: capitalize;
   }
 
@@ -35,6 +34,31 @@
 
   &-color {
     min-height: 60px;
-    display: flex;
+  }
+
+  @include devices(laptop) {
+    grid-template-columns: repeat(2, 1fr);
+
+    &-color {
+      min-height: 90px;
+    }
+  }
+
+  @include devices(tablet) {
+    grid-template-columns: 1fr;
+
+    &-colors {
+      grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+    }
+
+    &-color {
+      min-height: 100px;
+    }
+  }
+
+  @include devices(mobile) {
+    &-color {
+      min-height: 70px;
+    }
   }
 }
