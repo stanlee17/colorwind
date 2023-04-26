@@ -5,7 +5,10 @@ import { IoOptions } from 'react-icons/io5';
 import { ColorsContext } from '../../pages/Colors';
 
 const ColorPicker = ({ hex, index }) => {
+  // ColorsContext
   const { colors, setColors } = useContext(ColorsContext);
+
+  // Initial states
   const [color, setColor] = useState('');
   const [display, setDisplay] = useState(false);
 
@@ -28,11 +31,8 @@ const ColorPicker = ({ hex, index }) => {
         }
       })
     );
-
     setColor(color.hex);
   };
-
-  console.log(hex);
 
   return (
     <Fragment>

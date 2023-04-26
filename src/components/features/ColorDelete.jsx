@@ -5,6 +5,7 @@ import { TfiTrash } from 'react-icons/tfi';
 const ColorDelete = ({ id }) => {
   const { setSavedColors } = useContext(ColorsContext);
 
+  // FUNCTION: Delete saved colors
   const handleDelete = (id) =>
     setSavedColors((current) => current.filter((color) => color.id !== id));
 

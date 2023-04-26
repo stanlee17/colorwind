@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import namer from 'color-namer';
 import { ColorsContext } from '../../pages/Colors';
 import { RiHeartLine } from 'react-icons/ri';
 
@@ -13,23 +14,45 @@ import SaveModal from './SaveModal';
 import { getContrast } from '../../utils/utils';
 
 const ColorGenerator = ({ refetch }) => {
-  const [modalShow, setModalShow] = useState(false);
+  // ColorsContext
   const { colors } = useContext(ColorsContext);
+
+  // INITIAL: modalShow state
+  const [modalShow, setModalShow] = useState(false);
+
+  // function colorName(color) {
+  //   return namer(color, { pick: ['ntc'] }).ntc[0].name;
+  // }
+
+  // console.log(hexColors);
+  // const colorNames = [];
+  // hexColors.map((hex) => {
+  //   colorNames.push(colorName(hex));
+  //   return hexColors;
+  // });
+
+  // console.log(colorNames);
 
   return (
     <div className="color-generator">
+      {/* Maps each color from API */}
       <div className="color-generator-colors py-4">
         {colors.map((color, index) => {
+          const colorStyles = {
+            backgroundColor: color.color,
+            color: getContrast(color.color),
+          };
           return (
             <div
               key={index}
               className="color-generator-color"
-              style={{
-                backgroundColor: color.color,
-                color: getContrast(color.color),
-              }}
+              style={colorStyles}
             >
-              <h5 className="color-generator-hex">{color.color}</h5>
+              <div className="color-generator-content">
+                <h5 className="color-generator-hex">{color.color}</h5>
+                <p className="color-generator-name">{color.name}</p>
+              </div>
+              {/* Color generator settings */}
               <div className="color-generator-settings">
                 <ColorLock hex={color.color} index={index} />
                 <ColorPicker hex={color.color} index={index} />
@@ -39,6 +62,8 @@ const ColorGenerator = ({ refetch }) => {
           );
         })}
       </div>
+
+      {/* Color Generator Buttons */}
       <div className="color-generator-btn">
         <div className="color-generator-btn-generate">
           <ColorButton onClick={refetch} className="me-3">
@@ -58,6 +83,8 @@ const ColorGenerator = ({ refetch }) => {
           </ColorButton>
         </div>
       </div>
+
+      {/* Save Modal */}
       <SaveModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );

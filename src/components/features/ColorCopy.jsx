@@ -6,6 +6,7 @@ import {
 import useCopyToClipboard from '../../hooks/useCopyToClipboard';
 
 const ColorCopy = ({ hex }) => {
+  // useCopyToClipboard hook
   const [isCopied, handleCopy] = useCopyToClipboard(3000);
 
   return (

@@ -8,7 +8,6 @@ const Layout = () => (
     <Header />
     {/* Wrap all content in column-direction flexbox */}
     <div className="App-theme">
-      {/* REPLACE: {props.children} */}
       <Outlet />
     </div>
     <Footer />

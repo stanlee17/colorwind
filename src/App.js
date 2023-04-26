@@ -14,8 +14,10 @@ const queryClient = new QueryClient();
 export const ThemeContext = createContext(null);
 
 function App() {
+  // INITIAL: Theme state
   const [theme, setTheme] = useState(null);
 
+  // FUNCTION: Toggles theme between light/dark
   const toggleTheme = () => {
     setTheme((curr) => (curr === 'light' ? 'dark' : 'light'));
     saveUserSettings();
@@ -25,6 +27,7 @@ function App() {
     loadUserSettings();
   }
 
+  // FUNCTION: Load user settings if not it's not on default
   function loadUserSettings() {
     let userSettings = localStorage.getItem('userSettings');
     if (userSettings) {
@@ -35,10 +38,12 @@ function App() {
     }
   }
 
+  // FUNCTION: Default theme setting
   function defaultSettings() {
     setTheme('light');
   }
 
+  // FUNCTION: Saves user settings
   function saveUserSettings() {
     let toggleTheme = theme === 'light' ? 'dark' : 'light';
     localStorage.setItem(

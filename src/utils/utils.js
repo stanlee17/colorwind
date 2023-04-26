@@ -1,3 +1,4 @@
+// FUNCTION: Converts RGB to HEX
 export const rgbToHex = (r, g, b) => {
   return (
     '#' +
@@ -5,8 +6,9 @@ export const rgbToHex = (r, g, b) => {
   );
 };
 
-export const hexToRgb = (hex) =>
-  hex
+// FUNCTION: Converts HEX to RGB
+export const hexToRgb = (hex) => {
+  return hex
     .replace(
       /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
       (m, r, g, b) => '#' + r + r + g + g + b + b
@@ -14,7 +16,9 @@ export const hexToRgb = (hex) =>
     .substring(1)
     .match(/.{2}/g)
     .map((x) => parseInt(x, 16));
+};
 
+// FUNCTION: Switches colors between white/black depending on bg contrast
 export const getContrast = (hexcolor) => {
   // If a leading # is provided, remove it
   if (hexcolor.slice(0, 1) === '#') {
@@ -43,6 +47,7 @@ export const getContrast = (hexcolor) => {
   return yiq >= 128 ? 'black' : 'white';
 };
 
+// FUNCTION: Color input settings for API
 export const colorInput = (colors) => {
   let input = ['N', 'N', 'N', 'N', 'N'];
 

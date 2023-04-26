@@ -43,23 +43,30 @@ a {
 .color-generator-colors {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
 .color-generator-color {
-  padding: 1rem;
+  padding: 1.25rem;
+  border-radius: 10px;
   max-width: 300px;
-  min-height: 250px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+.color-generator-content {
+  text-align: center;
+  margin: auto 0;
+}
 .color-generator-hex {
   font-weight: bold;
+  margin-bottom: 0.3rem;
 }
 .color-generator-settings {
   display: flex;
 }
 .color-generator-settings svg {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   cursor: pointer;
 }
 .color-generator-settings div:not(:last-child) {
@@ -196,7 +203,7 @@ a {
 .color-btn {
   color: #ffffff;
   background-color: #38bdf8;
-  padding: 0.6rem 2.2rem;
+  padding: 0.7rem 3rem;
   font-size: 1.1rem;
   border-radius: 2rem;
   border: none;
@@ -224,7 +231,7 @@ a {
 .color-btn-secondary {
   border: 1px solid #333333;
   color: #333333;
-  padding: 0.6rem 2.2rem;
+  padding: 0.7rem 2.5rem;
   border-radius: 2rem;
   transition: all 0.2s ease-in-out;
   background-color: transparent;
@@ -255,13 +262,11 @@ a {
   padding: 1.2rem;
   text-align: center;
   font-size: 0.9rem;
-  background-color: #f7f7f8;
 }
 
 .header {
   background-color: #ffffff;
-  padding: 1.2rem;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 1.5rem 0;
 }
 .header-wrapper {
   display: flex;
@@ -333,5 +338,5 @@ a {
 }
 
 #dark .footer {
-  background-color: #1f1f1f;
+  background-color: #121212;
 }

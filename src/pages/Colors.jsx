@@ -1,7 +1,10 @@
 import { useQuery } from 'react-query';
 import React, { useEffect, useCallback, createContext, useState } from 'react';
+import namer from 'color-namer';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
+
+// Utils
 import { rgbToHex, colorInput } from '../utils/utils';
 
 // Components
@@ -11,25 +14,27 @@ import ColorSaved from '../components/features/ColorSaved';
 // Services
 import { apiBaseUrl } from '../services/apis';
 
+// CREATE CONTEXT: ColorsContext
 export const ColorsContext = createContext();
 
 const Colors = () => {
-  // Initial States
+  // INITIAL: Colors state
   const [colors, setColors] = useState([
-    { id: 1, color: '', isLocked: false },
-    { id: 2, color: '', isLocked: false },
-    { id: 3, color: '', isLocked: false },
-    { id: 4, color: '', isLocked: false },
-    { id: 5, color: '', isLocked: false },
+    { id: 1, color: '', isLocked: false, name: '' },
+    { id: 2, color: '', isLocked: false, name: '' },
+    { id: 3, color: '', isLocked: false, name: '' },
+    { id: 4, color: '', isLocked: false, name: '' },
+    { id: 5, color: '', isLocked: false, name: '' },
   ]);
 
+  // INITIAL: Saved colors state
   const [savedColors, setSavedColors] = useState(() => {
     const saved = localStorage.getItem('savedColors');
     const initialValue = JSON.parse(saved);
     return initialValue || [];
   });
 
-  // useQuery
+  // USEQUERY: Fetches 5 RGB colors
   const { isLoading, error, refetch } = useQuery({
     queryKey: ['colorData'],
     queryFn: fetchData,
@@ -37,6 +42,7 @@ const Colors = () => {
     onSuccess: (data) => onSuccessFetch(data),
   });
 
+  // FUNCTION: Fetches data
   async function fetchData() {
     const { data } = await axios.post(
       apiBaseUrl,
@@ -48,30 +54,44 @@ const Colors = () => {
     return data.result;
   }
 
-  // This code runs when data is finished fetching successfully
+  function colorName(color) {
+    return namer(color, { pick: ['ntc'] }).ntc[0].name;
+  }
+
+  // OnSuccess fetch
   function onSuccessFetch(data) {
-    // Convert api data from rgb to hex colors
+    // Convert from RGB to HEX Colors
     let hexColors = [];
     data.map((rgb) => {
       hexColors.push(rgbToHex(rgb[0], rgb[1], rgb[2]));
       return hexColors;
     });
 
-    // Store hex colors to colors array object color state & check for locked colors
+    console.log(hexColors);
+    const colorNames = [];
+    hexColors.map((hex) => {
+      colorNames.push(colorName(hex));
+      return hexColors;
+    });
+
+    console.log(colorNames);
+
+    // Store converted hex colors to colors state & check for any locked colors
     setColors(
       colors.map((color, index) => {
         if (color.isLocked) {
           return Object.freeze(color);
         } else {
-          return { ...color, color: hexColors[index] };
+          return { ...color, color: hexColors[index], name: colorNames[index] };
         }
       })
     );
   }
 
-  // Refetches data when Spacebar is pressed but will not work when typing an input value
+  // Refetches data on "spacebar"
   const handleSpacePress = useCallback(
     (e) => {
+      // Prevents refetching on input target
       if (e.target instanceof HTMLInputElement) {
         return;
       } else if (e.key === ' ') refetch();
@@ -81,7 +101,6 @@ const Colors = () => {
 
   useEffect(() => {
     localStorage.setItem('savedColors', JSON.stringify(savedColors));
-
     document.addEventListener('keydown', handleSpacePress);
     return () => {
       document.removeEventListener('keydown', handleSpacePress);
@@ -89,10 +108,11 @@ const Colors = () => {
   }, [handleSpacePress, savedColors]);
 
   if (isLoading) return <div>Loading...</div>;
+
   if (error) return <div>`An error has occurred: ${error.message}`</div>;
 
   return (
-    <div className="colors py-5">
+    <div className="colors py-4">
       <Container>
         <ColorsContext.Provider
           value={{ colors, setColors, savedColors, setSavedColors }}

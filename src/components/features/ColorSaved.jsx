@@ -5,10 +5,13 @@ import { ColorsContext } from '../../pages/Colors';
 import ColorDelete from './ColorDelete';
 
 const ColorSaved = () => {
+  // ColorsContext
   const { colors, setColors, savedColors } = useContext(ColorsContext);
 
+  // FUNCTION: Select saved palette onClick
   const handleSaved = (id) => {
     const selectedPalette = savedColors.find((color) => color.id === id);
+
     setColors(
       colors.map((color, index) => {
         return { ...color, color: selectedPalette.colors[index] };
