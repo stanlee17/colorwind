@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import namer from 'color-namer';
 import { Routes, Route } from 'react-router-dom';
 
 // Import Components
@@ -11,11 +12,29 @@ import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
 
+// createContext
 export const ThemeContext = createContext(null);
+export const ColorsContext = createContext(null);
 
 function App() {
   // INITIAL: Theme state
   const [theme, setTheme] = useState(null);
+
+  // INITIAL: Colors state
+  const [colors, setColors] = useState([
+    { id: 1, color: '', isLocked: false, name: '' },
+    { id: 2, color: '', isLocked: false, name: '' },
+    { id: 3, color: '', isLocked: false, name: '' },
+    { id: 4, color: '', isLocked: false, name: '' },
+    { id: 5, color: '', isLocked: false, name: '' },
+  ]);
+
+  // INITIAL: Saved colors state
+  const [savedColors, setSavedColors] = useState(() => {
+    const saved = localStorage.getItem('savedColors');
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
 
   // FUNCTION: Toggles theme between light/dark
   const toggleTheme = () => {
@@ -52,17 +71,25 @@ function App() {
     );
   }
 
+  function colorName(color) {
+    return namer(color, { pick: ['ntc'] }).ntc[0].name;
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
-        <div className="App" id={theme}>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Colors />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </div>
+        <ColorsContext.Provider
+          value={{ colors, setColors, savedColors, setSavedColors, colorName }}
+        >
+          <div className="App" id={theme}>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Colors />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </div>
+        </ColorsContext.Provider>
       </ThemeContext.Provider>
     </QueryClientProvider>
   );

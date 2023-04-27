@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query';
-import React, { useEffect, useCallback, createContext, useState } from 'react';
-import namer from 'color-namer';
+import React, { useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
 
@@ -14,25 +13,12 @@ import ColorSaved from '../components/features/ColorSaved';
 // Services
 import { apiBaseUrl } from '../services/apis';
 
-// CREATE CONTEXT: ColorsContext
-export const ColorsContext = createContext();
+import { ColorsContext } from '../App';
 
 const Colors = () => {
-  // INITIAL: Colors state
-  const [colors, setColors] = useState([
-    { id: 1, color: '', isLocked: false, name: '' },
-    { id: 2, color: '', isLocked: false, name: '' },
-    { id: 3, color: '', isLocked: false, name: '' },
-    { id: 4, color: '', isLocked: false, name: '' },
-    { id: 5, color: '', isLocked: false, name: '' },
-  ]);
-
-  // INITIAL: Saved colors state
-  const [savedColors, setSavedColors] = useState(() => {
-    const saved = localStorage.getItem('savedColors');
-    const initialValue = JSON.parse(saved);
-    return initialValue || [];
-  });
+  // ColorsContext
+  const { colors, setColors, savedColors, colorName } =
+    useContext(ColorsContext);
 
   // USEQUERY: Fetches 5 RGB colors
   const { isLoading, error, refetch } = useQuery({
@@ -52,10 +38,6 @@ const Colors = () => {
       })
     );
     return data.result;
-  }
-
-  function colorName(color) {
-    return namer(color, { pick: ['ntc'] }).ntc[0].name;
   }
 
   // OnSuccess fetch
@@ -112,12 +94,8 @@ const Colors = () => {
   return (
     <div className="colors py-4">
       <Container>
-        <ColorsContext.Provider
-          value={{ colors, setColors, savedColors, setSavedColors, colorName }}
-        >
-          <ColorGenerator refetch={refetch} />
-          <ColorSaved />
-        </ColorsContext.Provider>
+        <ColorGenerator refetch={refetch} />
+        <ColorSaved />
       </Container>
     </div>
   );

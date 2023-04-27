@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { IoLockOpen, IoLockClosed } from 'react-icons/io5';
-import { ColorsContext } from '../../pages/Colors';
+import { ColorsContext } from '../../App';
 
 const ColorLock = ({ index }) => {
   // ColorsContext

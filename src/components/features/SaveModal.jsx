@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import { ColorsContext } from '../../pages/Colors';
+import { ColorsContext } from '../../App';
 
 // Common
 import Message from '../common/Message';
@@ -26,8 +26,13 @@ const SaveModal = (props) => {
 
     let items = [];
     colors.map((color) => {
-      return items.push(color.color);
+      return items.push({
+        color: color.color,
+        name: color.name,
+      });
     });
+
+    console.log(items);
 
     const newItems = {
       id: savedColors.length + 1,

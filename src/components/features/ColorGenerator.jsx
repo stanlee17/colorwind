@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
-import namer from 'color-namer';
-import { ColorsContext } from '../../pages/Colors';
+import { ColorsContext } from '../../App';
 import { RiHeartLine } from 'react-icons/ri';
 
 // Components
@@ -61,6 +60,13 @@ const ColorGenerator = ({ refetch }) => {
           </p>
         </div>
         <div className="color-generator-btn-secondary">
+          <ColorButton
+            secondary
+            icon={<RiHeartLine />}
+            onClick={() => setModalShow(true)}
+          >
+            Export
+          </ColorButton>
           <ColorButton
             secondary
             icon={<RiHeartLine />}

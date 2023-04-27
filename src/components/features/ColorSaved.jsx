@@ -1,5 +1,5 @@
 import React, { useContext, Fragment } from 'react';
-import { ColorsContext } from '../../pages/Colors';
+import { ColorsContext } from '../../App';
 
 // Components
 import ColorDelete from './ColorDelete';
@@ -38,31 +38,31 @@ const ColorSaved = () => {
                   <div
                     className="color-saved-color"
                     style={{
-                      backgroundColor: color.colors[0],
+                      backgroundColor: color.colors[0].color,
                     }}
                   ></div>
                   <div
                     className="color-saved-color"
                     style={{
-                      backgroundColor: color.colors[1],
+                      backgroundColor: color.colors[1].color,
                     }}
                   ></div>
                   <div
                     className="color-saved-color"
                     style={{
-                      backgroundColor: color.colors[2],
+                      backgroundColor: color.colors[2].color,
                     }}
                   ></div>
                   <div
                     className="color-saved-color"
                     style={{
-                      backgroundColor: color.colors[3],
+                      backgroundColor: color.colors[3].color,
                     }}
                   ></div>
                   <div
                     className="color-saved-color"
                     style={{
-                      backgroundColor: color.colors[4],
+                      backgroundColor: color.colors[4].color,
                     }}
                   ></div>
                 </div>

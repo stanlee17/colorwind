@@ -2,7 +2,7 @@ import React, { useState, Fragment, useContext } from 'react';
 import { SketchPicker } from 'react-color';
 import { IoOptions } from 'react-icons/io5';
 
-import { ColorsContext } from '../../pages/Colors';
+import { ColorsContext } from '../../App';
 
 const ColorPicker = ({ hex, index }) => {
   // ColorsContext

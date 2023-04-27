@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ColorsContext } from '../../pages/Colors';
+import { ColorsContext } from '../../App';
 import { TfiTrash } from 'react-icons/tfi';
 
 const ColorDelete = ({ id }) => {
