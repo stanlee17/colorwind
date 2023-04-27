@@ -67,14 +67,12 @@ const Colors = () => {
       return hexColors;
     });
 
-    console.log(hexColors);
+    // Get color names from color-namer
     const colorNames = [];
     hexColors.map((hex) => {
       colorNames.push(colorName(hex));
       return hexColors;
     });
-
-    console.log(colorNames);
 
     // Store converted hex colors to colors state & check for any locked colors
     setColors(
@@ -115,7 +113,7 @@ const Colors = () => {
     <div className="colors py-4">
       <Container>
         <ColorsContext.Provider
-          value={{ colors, setColors, savedColors, setSavedColors }}
+          value={{ colors, setColors, savedColors, setSavedColors, colorName }}
         >
           <ColorGenerator refetch={refetch} />
           <ColorSaved />

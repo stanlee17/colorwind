@@ -6,7 +6,7 @@ import { ColorsContext } from '../../pages/Colors';
 
 const ColorPicker = ({ hex, index }) => {
   // ColorsContext
-  const { colors, setColors } = useContext(ColorsContext);
+  const { colors, setColors, colorName } = useContext(ColorsContext);
 
   // Initial states
   const [color, setColor] = useState('');
@@ -25,12 +25,17 @@ const ColorPicker = ({ hex, index }) => {
     setColors(
       colors.map((item) => {
         if (item.id === index + 1) {
-          return { ...item, color: color.hex.toUpperCase() };
+          return {
+            ...item,
+            color: color.hex.toUpperCase(),
+            name: colorName(color.hex),
+          };
         } else {
           return item;
         }
       })
     );
+
     setColor(color.hex);
   };
 

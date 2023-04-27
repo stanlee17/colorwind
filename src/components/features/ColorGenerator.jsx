@@ -20,19 +20,6 @@ const ColorGenerator = ({ refetch }) => {
   // INITIAL: modalShow state
   const [modalShow, setModalShow] = useState(false);
 
-  // function colorName(color) {
-  //   return namer(color, { pick: ['ntc'] }).ntc[0].name;
-  // }
-
-  // console.log(hexColors);
-  // const colorNames = [];
-  // hexColors.map((hex) => {
-  //   colorNames.push(colorName(hex));
-  //   return hexColors;
-  // });
-
-  // console.log(colorNames);
-
   return (
     <div className="color-generator">
       {/* Maps each color from API */}
