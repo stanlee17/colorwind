@@ -173,7 +173,7 @@ a {
   cursor: pointer;
 }
 .color-saved-color {
-  min-height: 60px;
+  min-height: 150px;
 }
 @media only screen and (max-width: 1200px) {
   .color-saved {

@@ -11,10 +11,15 @@ const ColorSaved = () => {
   // FUNCTION: Select saved palette onClick
   const handleSaved = (id) => {
     const selectedPalette = savedColors.find((color) => color.id === id);
+    console.log(selectedPalette);
 
     setColors(
       colors.map((color, index) => {
-        return { ...color, color: selectedPalette.colors[index] };
+        return {
+          ...color,
+          color: selectedPalette.colors[index].color,
+          name: selectedPalette.colors[index].name,
+        };
       })
     );
   };
@@ -27,10 +32,10 @@ const ColorSaved = () => {
           savedColors.map((color) => {
             return (
               <div className="color-saved-wrapper" key={color.id}>
-                <div className="color-saved-content">
+                {/* <div className="color-saved-content">
                   <p className="color-saved-name">{color.name}</p>
                   <ColorDelete id={color.id} />
-                </div>
+                </div> */}
                 <div
                   className="color-saved-colors"
                   onClick={() => handleSaved(color.id)}
@@ -39,6 +44,8 @@ const ColorSaved = () => {
                     className="color-saved-color"
                     style={{
                       backgroundColor: color.colors[0].color,
+                      borderTopLeftRadius: '10px',
+                      borderBottomLeftRadius: '10px',
                     }}
                   ></div>
                   <div
@@ -63,6 +70,8 @@ const ColorSaved = () => {
                     className="color-saved-color"
                     style={{
                       backgroundColor: color.colors[4].color,
+                      borderTopRightRadius: '10px',
+                      borderBottomRightRadius: '10px',
                     }}
                   ></div>
                 </div>
