@@ -1,11 +1,17 @@
 import React, { useContext, useState, useRef } from 'react';
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+import Modal from 'react-modal';
 import { ColorsContext } from '../../App';
+
+// Icons
+import { IoClose } from 'react-icons/io5';
 
 // Common
 import Message from '../common/Message';
 
-const SaveModal = (props) => {
+Modal.setAppElement('#root');
+
+const SaveModal = ({ saveModal, closeModals }) => {
   const { colors, savedColors, setSavedColors } = useContext(ColorsContext);
   const inputRef = useRef(null);
   const [name, setName] = useState('');
@@ -20,8 +26,7 @@ const SaveModal = (props) => {
     e.preventDefault();
 
     if (savedColors.find((color) => color.name === name)) {
-      setError('The name already exist, please enter a different one');
-      return;
+      return setError('The name already exist, please enter a different one');
     }
 
     let items = [];
@@ -32,33 +37,31 @@ const SaveModal = (props) => {
       });
     });
 
-    console.log(items);
-
     const newItems = {
       id: savedColors.length + 1,
       name,
       colors: items,
     };
 
-    props.onHide();
     setError('');
+    closeModals('saveModal');
     return setSavedColors([...savedColors, newItems]);
   };
 
   return (
     <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
+      isOpen={saveModal}
+      onRequestClose={() => closeModals('saveModal')}
+      contentLabel="Save Modal"
+      className="save-modal"
+      overlayClassName="save-modal-overlay"
     >
-      <Form onSubmit={handleSubmit}>
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Save Palette
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+      <div className="save-modal-header">
+        <h5>Save Palette</h5>
+        <IoClose size={25} onClick={() => closeModals('saveModal')} />
+      </div>
+      <div className="save-modal-content">
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
             <Form.Control
@@ -70,13 +73,11 @@ const SaveModal = (props) => {
             />
             {error && <Message variant="error">{error}</Message>}
           </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
           <Button variant="success" onClick={handleSubmit}>
             Save
           </Button>
-        </Modal.Footer>
-      </Form>
+        </Form>
+      </div>
     </Modal>
   );
 };

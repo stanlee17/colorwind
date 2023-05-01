@@ -17,3 +17,45 @@
     }
   }
 }
+
+@mixin modal($width, $height, $bgColor) {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: $bgColor;
+  min-width: $width;
+  min-height: $height;
+}
+
+@mixin modal-header($svgColor, $borderColor) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $borderColor;
+  padding: 1.2rem 2rem;
+
+  & h5 {
+    margin: 0;
+  }
+
+  & svg {
+    color: $svgColor;
+    cursor: pointer;
+  }
+}
+
+@mixin modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}

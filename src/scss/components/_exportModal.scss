@@ -1,0 +1,61 @@
+@use '../abstracts/' as *;
+
+.export-modal {
+  @include modal(500px, 230px, $white-color);
+
+  &-header {
+    @include modal-header($black-color, #d8d8d8);
+
+    & h5 {
+      font-weight: bold;
+    }
+  }
+
+  &-options {
+    display: grid;
+    padding: 1rem 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: 1px solid #d8d8d8;
+    gap: 1rem;
+
+    & div {
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    & div:hover {
+      color: #ec35c4;
+    }
+  }
+
+  &-buttons {
+    text-align: end;
+    padding-top: 1.5rem;
+  }
+
+  &-content {
+    padding: 2rem;
+  }
+
+  &-color {
+    padding: 1.2rem;
+  }
+
+  &-color:first-of-type {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  &-color:last-of-type {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  &-overlay {
+    @include modal-overlay;
+  }
+}

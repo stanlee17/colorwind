@@ -118,7 +118,7 @@ a {
 
 .color-delete {
   font-size: 1rem;
-  color: #ef4444;
+  display: inline-block;
   cursor: pointer;
 }
 @media only screen and (max-width: 800px) {
@@ -151,29 +151,34 @@ a {
   column-gap: 2rem;
   row-gap: 2rem;
 }
-.color-saved-heading {
-  font-weight: 800;
-  margin-bottom: 2rem;
-}
-.color-saved-wrapper {
-  background-color: #f7f7f8;
-}
-.color-saved-content {
-  display: flex;
-  align-items: center;
-  padding: 0.6rem 1.1rem;
-  justify-content: space-between;
-}
-.color-saved-name {
-  text-transform: capitalize;
-}
 .color-saved-colors {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
   cursor: pointer;
 }
 .color-saved-color {
-  min-height: 150px;
+  min-height: 120px;
+}
+.color-saved-heading {
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+.color-saved-wrapper {
+  position: relative;
+  border-radius: 10px;
+}
+.color-saved-content {
+  font-weight: bold;
+  display: flex;
+  text-transform: capitalize;
+  justify-content: space-between;
+  margin: 0.5rem 0.5rem 0.5rem;
+}
+.color-saved-options svg {
+  cursor: pointer;
+}
+.color-saved-options svg:not(:last-child) {
+  margin-right: 0.5rem;
 }
 @media only screen and (max-width: 1200px) {
   .color-saved {
@@ -209,7 +214,7 @@ a {
   border: none;
   transition: all 0.2s ease-in-out;
   outline: none;
-  font-weight: 500;
+  font-weight: bold;
 }
 .color-btn svg {
   font-size: 1.3rem;
@@ -233,6 +238,7 @@ a {
   color: #333333;
   padding: 0.7rem 2.5rem;
   border-radius: 2rem;
+  font-weight: bold;
   transition: all 0.2s ease-in-out;
   background-color: transparent;
   outline: none;
@@ -256,6 +262,124 @@ a {
 }
 .message-error {
   color: #f13535;
+}
+
+.save-modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  min-width: 500px;
+  min-height: 230px;
+}
+.save-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8d8d8;
+  padding: 1.2rem 2rem;
+}
+.save-modal-header h5 {
+  margin: 0;
+}
+.save-modal-header svg {
+  color: #161616;
+  cursor: pointer;
+}
+.save-modal-content {
+  padding: 1rem 2rem;
+}
+.save-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.export-modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  min-width: 500px;
+  min-height: 230px;
+}
+.export-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8d8d8;
+  padding: 1.2rem 2rem;
+}
+.export-modal-header h5 {
+  margin: 0;
+}
+.export-modal-header svg {
+  color: #161616;
+  cursor: pointer;
+}
+.export-modal-header h5 {
+  font-weight: bold;
+}
+.export-modal-options {
+  display: grid;
+  padding: 1rem 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  border-bottom: 1px solid #d8d8d8;
+  gap: 1rem;
+}
+.export-modal-options div {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.export-modal-options div:hover {
+  color: #ec35c4;
+}
+.export-modal-buttons {
+  text-align: end;
+  padding-top: 1.5rem;
+}
+.export-modal-content {
+  padding: 2rem;
+}
+.export-modal-color {
+  padding: 1.2rem;
+}
+.export-modal-color:first-of-type {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.export-modal-color:last-of-type {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.export-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .footer {
@@ -327,12 +451,6 @@ a {
   color: #ffffff;
 }
 
-#dark .color-saved-wrapper {
-  background-color: #1f1f1f;
-}
-#dark .color-saved-name {
-  color: #cacaca;
-}
 #dark .color-saved-empty {
   color: #cacaca;
 }

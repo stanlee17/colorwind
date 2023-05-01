@@ -11,7 +11,7 @@ const ColorDelete = ({ id }) => {
 
   return (
     <div className="color-delete" onClick={() => handleDelete(id)}>
-      <TfiTrash />
+      <TfiTrash size={18} />
     </div>
   );
 };

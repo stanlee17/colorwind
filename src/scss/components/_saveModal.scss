@@ -1,1 +1,17 @@
 @use '../abstracts/' as *;
+
+.save-modal {
+  @include modal(500px, 230px, $white-color);
+
+  &-header {
+    @include modal-header($black-color, #d8d8d8);
+  }
+
+  &-content {
+    padding: 1rem 2rem;
+  }
+
+  &-overlay {
+    @include modal-overlay;
+  }
+}

@@ -2,7 +2,7 @@
 
 .color-delete {
   font-size: 1rem;
-  color: $red-color;
+  display: inline-block;
   cursor: pointer;
 
   @include devices(tablet) {

@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { ColorsContext } from '../../App';
+
+// Icons
 import { RiHeartLine } from 'react-icons/ri';
+import { IoCodeSlash } from 'react-icons/io5';
 
 // Components
 import ColorButton from '../common/ColorButton';
@@ -8,16 +11,28 @@ import ColorLock from './ColorLock';
 import ColorPicker from './ColorPicker';
 import ColorCopy from './ColorCopy';
 import SaveModal from './SaveModal';
+import ExportModal from './ExportModal';
 
 // Utils
 import { getContrast } from '../../utils/utils';
 
 const ColorGenerator = ({ refetch }) => {
+  // useState
+  const [modals, setModals] = useState({
+    saveModal: false,
+    exportModal: false,
+  });
+
   // ColorsContext
   const { colors } = useContext(ColorsContext);
 
-  // INITIAL: modalShow state
-  const [modalShow, setModalShow] = useState(false);
+  const openModals = (modalName) => {
+    return setModals({ ...modals, [modalName]: true });
+  };
+
+  const closeModals = (modalName) => {
+    return setModals({ ...modals, [modalName]: false });
+  };
 
   return (
     <div className="color-generator">
@@ -62,15 +77,16 @@ const ColorGenerator = ({ refetch }) => {
         <div className="color-generator-btn-secondary">
           <ColorButton
             secondary
-            icon={<RiHeartLine />}
-            onClick={() => setModalShow(true)}
+            icon={<IoCodeSlash />}
+            className="me-3"
+            onClick={() => openModals('exportModal')}
           >
             Export
           </ColorButton>
           <ColorButton
             secondary
             icon={<RiHeartLine />}
-            onClick={() => setModalShow(true)}
+            onClick={() => openModals('saveModal')}
           >
             Save
           </ColorButton>
@@ -78,7 +94,8 @@ const ColorGenerator = ({ refetch }) => {
       </div>
 
       {/* Save Modal */}
-      <SaveModal show={modalShow} onHide={() => setModalShow(false)} />
+      <SaveModal closeModals={closeModals} saveModal={modals.saveModal} />
+      <ExportModal closeModals={closeModals} exportModal={modals.exportModal} />
     </div>
   );
 };

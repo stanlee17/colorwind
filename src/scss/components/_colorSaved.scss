@@ -6,26 +6,6 @@
   column-gap: 2rem;
   row-gap: 2rem;
 
-  &-heading {
-    font-weight: 800;
-    margin-bottom: 2rem;
-  }
-
-  &-wrapper {
-    background-color: $bg-light;
-  }
-
-  &-content {
-    display: flex;
-    align-items: center;
-    padding: 0.6rem 1.1rem;
-    justify-content: space-between;
-  }
-
-  &-name {
-    text-transform: capitalize;
-  }
-
   &-colors {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
@@ -33,7 +13,35 @@
   }
 
   &-color {
-    min-height: 150px;
+    min-height: 120px;
+  }
+
+  &-heading {
+    font-weight: 800;
+    margin-bottom: 2rem;
+  }
+
+  &-wrapper {
+    position: relative;
+    border-radius: 10px;
+  }
+
+  &-content {
+    font-weight: bold;
+    display: flex;
+    text-transform: capitalize;
+    justify-content: space-between;
+    margin: 0.5rem 0.5rem 0.5rem;
+  }
+
+  &-options {
+    & svg {
+      cursor: pointer;
+    }
+
+    & svg:not(:last-child) {
+      margin-right: 0.5rem;
+    }
   }
 
   @include devices(laptop) {

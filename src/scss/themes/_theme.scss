@@ -43,14 +43,6 @@
 
 // Color Saved
 #dark .color-saved {
-  &-wrapper {
-    background-color: $dark-mode-overlay;
-  }
-
-  &-name {
-    color: $dark-mode-white;
-  }
-
   &-empty {
     color: $dark-mode-white;
   }

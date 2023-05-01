@@ -1,6 +1,10 @@
 import React, { useContext, Fragment } from 'react';
 import { ColorsContext } from '../../App';
 
+// Icons
+import { IoCodeSlash } from 'react-icons/io5';
+import { RiEditBoxLine } from 'react-icons/ri';
+
 // Components
 import ColorDelete from './ColorDelete';
 
@@ -32,10 +36,6 @@ const ColorSaved = () => {
           savedColors.map((color) => {
             return (
               <div className="color-saved-wrapper" key={color.id}>
-                {/* <div className="color-saved-content">
-                  <p className="color-saved-name">{color.name}</p>
-                  <ColorDelete id={color.id} />
-                </div> */}
                 <div
                   className="color-saved-colors"
                   onClick={() => handleSaved(color.id)}
@@ -74,6 +74,14 @@ const ColorSaved = () => {
                       borderBottomRightRadius: '10px',
                     }}
                   ></div>
+                </div>
+                <div className="color-saved-content">
+                  <p>{color.name}</p>
+                  <div className="color-saved-options">
+                    <RiEditBoxLine size={18} />
+                    <IoCodeSlash size={18} />
+                    <ColorDelete id={color.id} />
+                  </div>
                 </div>
               </div>
             );
