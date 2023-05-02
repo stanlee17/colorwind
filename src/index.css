@@ -337,23 +337,31 @@ a {
 .export-modal-header h5 {
   font-weight: bold;
 }
-.export-modal-options {
+.export-modal-options .color-codes,
+.export-modal-options .code-format {
   display: grid;
-  padding: 1rem 2rem;
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   text-align: center;
   align-items: center;
   font-weight: bold;
-  border-bottom: 1px solid #d8d8d8;
   gap: 1rem;
 }
-.export-modal-options div {
+.export-modal-options .color-codes div,
+.export-modal-options .code-format div {
   cursor: pointer;
   transition: all 0.3s;
 }
-.export-modal-options div:hover {
+.export-modal-options .color-codes div:hover,
+.export-modal-options .code-format div:hover {
   color: #ec35c4;
+}
+.export-modal-options .color-codes {
+  padding: 1rem 2rem 1rem;
+}
+.export-modal-options .code-format {
+  padding: 0rem 2rem 1rem;
+  border-bottom: 1px solid #d8d8d8;
 }
 .export-modal-buttons {
   text-align: end;

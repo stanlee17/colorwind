@@ -12,23 +12,32 @@
   }
 
   &-options {
-    display: grid;
-    padding: 1rem 2rem;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    font-weight: bold;
-    border-bottom: 1px solid #d8d8d8;
-    gap: 1rem;
+    & .color-codes,
+    .code-format {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      font-weight: bold;
+      gap: 1rem;
 
-    & div {
-      cursor: pointer;
-      transition: all 0.3s;
+      & div {
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      & div:hover {
+        color: #ec35c4;
+      }
     }
 
-    & div:hover {
-      color: #ec35c4;
+    & .color-codes {
+      padding: 1rem 2rem 1rem;
+    }
+
+    & .code-format {
+      padding: 0rem 2rem 1rem;
+      border-bottom: 1px solid #d8d8d8;
     }
   }
 
