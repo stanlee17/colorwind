@@ -18,6 +18,18 @@ export const hexToRgb = (hex) => {
     .map((x) => parseInt(x, 16));
 };
 
+export const convertToCss = (colorName) => {
+  return `--${colorName.split(' ').join('-').toLowerCase()}:`;
+};
+
+export const convertToScss = (colorName) => {
+  return `$${colorName.split(' ').join('-').toLowerCase()}:`;
+};
+
+export const convertToJSON = (colorName) => {
+  return `"${colorName.split(' ').join('-').toLowerCase()}":`;
+};
+
 // FUNCTION: Switches colors between white/black depending on bg contrast
 export const getContrast = (hexcolor) => {
   // If a leading # is provided, remove it

@@ -1,12 +1,19 @@
 import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
+import convert from 'color-convert';
 import ColorButton from '../common/ColorButton';
 
 // ColorsContext
 import { ColorsContext } from '../../App';
 
 // Utils
-import { getContrast } from '../../utils/utils';
+import {
+  getContrast,
+  convertToCss,
+  convertToScss,
+  convertToJSON,
+  hexToRgb,
+} from '../../utils/utils';
 
 // Icons
 import { IoClose, IoCopyOutline, IoCheckmarkDone } from 'react-icons/io5';
@@ -18,17 +25,71 @@ const ExportModal = ({ exportModal, closeModals }) => {
   // useState
   const [colorCode, setColorCode] = useState('hex');
   const [codeFormat, setCodeFormat] = useState('css');
+  const [convertedColor, setConvertedColor] = useState([]);
+
+  const colorCodes = ['hex', 'rgb', 'hsl', 'cmyk'];
+  const codeFormats = ['css', 'scss', 'json', 'raw'];
 
   function handleColorCodes(e) {
     const id = e.target.id;
-    console.log(id);
-    setColorCode(id);
+
+    if (id) {
+      return setColorCode(id);
+    }
   }
 
   function handleCodeFormat(e) {
     const id = e.target.id;
-    console.log(id);
-    setCodeFormat(id);
+
+    if (id) {
+      return setCodeFormat(id);
+    }
+  }
+
+  function getCodeFormat(colorName) {
+    let converted;
+    switch (codeFormat) {
+      case 'css':
+        converted = convertToCss(colorName);
+        break;
+      case 'scss':
+        converted = convertToScss(colorName);
+        break;
+      case 'json':
+        converted = convertToJSON(colorName);
+        break;
+      default:
+        converted = '';
+    }
+    return converted;
+  }
+
+  function getColorCode(color) {
+    let converted;
+
+    switch (colorCode) {
+      case 'hex':
+        converted = `${color};`;
+        break;
+      case 'rgb':
+        converted = `(${convert.hex.rgb(color).join(', ')});`;
+        break;
+      case 'hsl':
+        const hslArr = convert.hex.hsl(color);
+        converted = `hsl(${hslArr[0]}, ${hslArr[1]}%, ${hslArr[2]}%);`;
+        break;
+      case 'cmyk':
+        converted = `cmyk(${convert.hex.cmyk(color).join('%, ')}%);`;
+        break;
+      default:
+        converted = color;
+    }
+
+    if (codeFormat === 'json') {
+      return `"${converted.slice(0, -1)}",`;
+    }
+
+    return converted;
   }
 
   return (
@@ -68,7 +129,7 @@ const ExportModal = ({ exportModal, closeModals }) => {
           <div id="json" style={{ color: codeFormat === 'json' && '#ec35c4' }}>
             JSON
           </div>
-          <div id="raw" style={{ color: codeFormat === 'json' && '#ec35c4' }}>
+          <div id="raw" style={{ color: codeFormat === 'raw' && '#ec35c4' }}>
             RAW
           </div>
         </div>
@@ -86,7 +147,7 @@ const ExportModal = ({ exportModal, closeModals }) => {
                 className="export-modal-color"
                 style={colorStyles}
               >
-                {color.name} {color.color}
+                {getCodeFormat(color.name)} {getColorCode(color.color)}
               </div>
             );
           })}
