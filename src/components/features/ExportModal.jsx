@@ -3,6 +3,8 @@ import Modal from 'react-modal';
 import convert from 'color-convert';
 import ColorButton from '../common/ColorButton';
 
+import useCopyToClipboard from '../../hooks/useCopyToClipboard';
+
 // ColorsContext
 import { ColorsContext } from '../../App';
 
@@ -12,20 +14,24 @@ import {
   convertToCss,
   convertToScss,
   convertToJSON,
-  hexToRgb,
 } from '../../utils/utils';
 
 // Icons
-import { IoClose, IoCopyOutline, IoCheckmarkDone } from 'react-icons/io5';
+import {
+  IoClose,
+  IoCopySharp,
+  IoCopyOutline,
+  IoCheckmarkDone,
+} from 'react-icons/io5';
 
 const ExportModal = ({ exportModal, closeModals }) => {
+  const [isCopied, handleCopy] = useCopyToClipboard(3000);
   // useContext
   const { colors } = useContext(ColorsContext);
 
   // useState
   const [colorCode, setColorCode] = useState('hex');
   const [codeFormat, setCodeFormat] = useState('css');
-  const [convertedColor, setConvertedColor] = useState([]);
 
   const colorCodes = ['hex', 'rgb', 'hsl', 'cmyk'];
   const codeFormats = ['css', 'scss', 'json', 'raw'];
@@ -66,7 +72,6 @@ const ExportModal = ({ exportModal, closeModals }) => {
 
   function getColorCode(color) {
     let converted;
-
     switch (colorCode) {
       case 'hex':
         converted = `${color};`;
@@ -87,9 +92,24 @@ const ExportModal = ({ exportModal, closeModals }) => {
 
     if (codeFormat === 'json') {
       return `"${converted.slice(0, -1)}",`;
+    } else if (codeFormat === 'raw') {
+      return converted.slice(0, -1);
     }
-
     return converted;
+  }
+
+  function getConvertedCode(name, color) {
+    return `${getCodeFormat(name)} ${getColorCode(color)}`;
+  }
+
+  function handleCopyAll() {
+    const copy = [];
+    colors.forEach((color) => {
+      copy.push(getConvertedCode(color.name, color.color));
+    });
+
+    const copyAll = copy.join('\n');
+    handleCopy(copyAll);
   }
 
   return (
@@ -106,32 +126,30 @@ const ExportModal = ({ exportModal, closeModals }) => {
       </div>
       <div className="export-modal-options">
         <div className="color-codes" onClick={handleColorCodes}>
-          <div id="hex" style={{ color: colorCode === 'hex' && '#ec35c4' }}>
-            HEX
-          </div>
-          <div id="rgb" style={{ color: colorCode === 'rgb' && '#ec35c4' }}>
-            RGB
-          </div>
-          <div id="hsl" style={{ color: colorCode === 'hsl' && '#ec35c4' }}>
-            HSL
-          </div>
-          <div id="cmyk" style={{ color: colorCode === 'cmyk' && '#ec35c4' }}>
-            CMYK
-          </div>
+          {colorCodes.map((color, index) => {
+            return (
+              <div
+                id={color}
+                style={{ color: colorCode === color && '#ec35c4' }}
+                key={index}
+              >
+                {color.toUpperCase()}
+              </div>
+            );
+          })}
         </div>
         <div className="code-format" onClick={handleCodeFormat}>
-          <div id="css" style={{ color: codeFormat === 'css' && '#ec35c4' }}>
-            CSS
-          </div>
-          <div id="scss" style={{ color: codeFormat === 'scss' && '#ec35c4' }}>
-            SCSS
-          </div>
-          <div id="json" style={{ color: codeFormat === 'json' && '#ec35c4' }}>
-            JSON
-          </div>
-          <div id="raw" style={{ color: codeFormat === 'raw' && '#ec35c4' }}>
-            RAW
-          </div>
+          {codeFormats.map((format, index) => {
+            return (
+              <div
+                id={format}
+                style={{ color: codeFormat === format && '#ec35c4' }}
+                key={index}
+              >
+                {format.toUpperCase()}
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="export-modal-content">
@@ -141,19 +159,30 @@ const ExportModal = ({ exportModal, closeModals }) => {
               backgroundColor: color.color,
               color: getContrast(color.color),
             };
+
             return (
               <div
                 key={index}
                 className="export-modal-color"
                 style={colorStyles}
               >
-                {getCodeFormat(color.name)} {getColorCode(color.color)}
+                <p>{getConvertedCode(color.name, color.color)}</p>
+                <IoCopySharp
+                  onClick={() =>
+                    handleCopy(getConvertedCode(color.name, color.color))
+                  }
+                />
               </div>
             );
           })}
         </div>
         <div className="export-modal-buttons">
-          <ColorButton secondary icon={<IoCopyOutline />} className="me-3">
+          <ColorButton
+            secondary
+            icon={<IoCopyOutline />}
+            className="me-3"
+            onClick={handleCopyAll}
+          >
             Copy All
           </ColorButton>
           <ColorButton

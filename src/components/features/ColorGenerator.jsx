@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { ColorsContext } from '../../App';
+import { ColorsContext, ModalsContext } from '../../App';
 
 // Icons
 import { RiHeartLine } from 'react-icons/ri';
@@ -18,21 +18,10 @@ import { getContrast } from '../../utils/utils';
 
 const ColorGenerator = ({ refetch }) => {
   // useState
-  const [modals, setModals] = useState({
-    saveModal: false,
-    exportModal: false,
-  });
 
-  // ColorsContext
+  // useContext
   const { colors } = useContext(ColorsContext);
-
-  const openModals = (modalName) => {
-    return setModals({ ...modals, [modalName]: true });
-  };
-
-  const closeModals = (modalName) => {
-    return setModals({ ...modals, [modalName]: false });
-  };
+  const { modals, closeModals, openModals } = useContext(ModalsContext);
 
   return (
     <div className="color-generator">

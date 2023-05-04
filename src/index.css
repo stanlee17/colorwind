@@ -370,8 +370,17 @@ a {
 .export-modal-content {
   padding: 2rem;
 }
+.export-modal-colors {
+  font-weight: 500;
+}
 .export-modal-color {
   padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.export-modal-color svg {
+  cursor: pointer;
 }
 .export-modal-color:first-of-type {
   border-top-left-radius: 10px;

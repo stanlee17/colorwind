@@ -50,8 +50,18 @@
     padding: 2rem;
   }
 
+  &-colors {
+    font-weight: 500;
+  }
+
   &-color {
     padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & svg {
+      cursor: pointer;
+    }
   }
 
   &-color:first-of-type {
