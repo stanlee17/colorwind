@@ -36,6 +36,57 @@ a {
   flex: 1;
 }
 
+.card-skeleton {
+  margin-bottom: 2.5rem;
+}
+.card-skeleton .colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.card-skeleton .color-skeleton {
+  border-radius: 10px;
+}
+.card-skeleton .colors-button {
+  display: flex;
+  justify-content: space-between;
+}
+.card-skeleton .color-button {
+  display: flex;
+  align-items: center;
+}
+.card-skeleton .skeleton-button {
+  min-width: 175px;
+  min-height: 50px;
+  border-radius: 50px;
+  padding: 0.7rem 3rem;
+}
+.card-skeleton .skeleton-text {
+  width: 300px;
+  margin-left: 1rem;
+  border-radius: 10px;
+}
+
+.colors-library .skeleton-heading {
+  max-width: 150px;
+  min-height: 30px;
+  margin-bottom: 2rem;
+  border-radius: 50px;
+}
+.colors-library .skeleton-saved-colors {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.colors-library .saved-color-content {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+}
+.colors-library .saved-color-buttons {
+  display: flex;
+}
+
 .color-generator {
   position: relative;
   margin-bottom: 4rem;

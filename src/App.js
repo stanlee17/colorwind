@@ -2,6 +2,7 @@ import React, { createContext, useState } from 'react';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import namer from 'color-namer';
 import { Routes, Route } from 'react-router-dom';
+import { SkeletonTheme } from 'react-loading-skeleton';
 import Modal from 'react-modal';
 
 // Import Components
@@ -118,14 +119,16 @@ function App() {
               setModals,
             }}
           >
-            <div className="App" id={theme}>
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Colors />} />
-                  <Route path="*" element={<NotFound />} />
-                </Route>
-              </Routes>
-            </div>
+            <SkeletonTheme baseColor="#E8E8E8" highlightColor="#F8F8F8">
+              <div className="App" id={theme}>
+                <Routes>
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<Colors />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Route>
+                </Routes>
+              </div>
+            </SkeletonTheme>
           </ModalsContext.Provider>
         </ColorsContext.Provider>
       </ThemeContext.Provider>

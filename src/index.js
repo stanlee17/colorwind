@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 // Global stylesheet imports
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 import './index.css';
 
 // Import root component

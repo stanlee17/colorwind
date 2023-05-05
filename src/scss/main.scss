@@ -2,6 +2,7 @@
 @use './base/base';
 
 // component imports
+@use './components/cardSkeleton';
 @use './components/colorGenerator';
 @use './components/colorDelete';
 @use './components/colorPicker';

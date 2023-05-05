@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import React, { useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
-import { Container } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 
 // Utils
 import { rgbToHex, colorInput } from '../utils/utils';
@@ -9,6 +9,9 @@ import { rgbToHex, colorInput } from '../utils/utils';
 // Components
 import ColorGenerator from '../components/features/ColorGenerator';
 import ColorSaved from '../components/features/ColorSaved';
+
+// Common
+import CardSkeleton from '../components/common/CardSkeleton';
 
 // Services
 import { apiBaseUrl } from '../services/apis';
@@ -87,7 +90,12 @@ const Colors = () => {
     };
   }, [handleSpacePress, savedColors]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <Container>
+        <CardSkeleton savedCards={savedColors.length} colorCards={5} />
+      </Container>
+    );
 
   if (error) return <div>`An error has occurred: ${error.message}`</div>;
 
