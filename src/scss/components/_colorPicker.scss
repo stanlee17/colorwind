@@ -2,6 +2,7 @@
 
 .color-picker {
   position: relative;
+  z-index: 50;
 
   &-wrapper {
     position: absolute;

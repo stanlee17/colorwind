@@ -180,6 +180,7 @@ a {
 
 .color-picker {
   position: relative;
+  z-index: 50;
 }
 .color-picker-wrapper {
   position: absolute;
