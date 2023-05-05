@@ -24,12 +24,10 @@
     }
   }
 
-  &-switch {
-    display: flex;
-    align-items: center;
+  &-theme {
+  }
 
-    & p {
-      margin-right: 1rem;
-    }
+  &-switch {
+    cursor: pointer;
   }
 }

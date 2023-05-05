@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ThemeContext } from '../../App';
-import ReactSwitch from 'react-switch';
 import { Container } from 'react-bootstrap';
+
+// Icons
+import { RiSunLine, RiMoonLine } from 'react-icons/ri';
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -14,12 +16,14 @@ const Header = () => {
           <a href="/" className="header-logo">
             <Logo /> Colorwind
           </a>
-          <div className="header-switch">
-            <p>{theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</p>
-            <ReactSwitch
-              onChange={toggleTheme}
-              checked={theme === 'dark'}
-            ></ReactSwitch>
+          <div className="header-theme">
+            <div className="header-switch" onClick={toggleTheme}>
+              {theme === 'dark' ? (
+                <RiMoonLine size={25} />
+              ) : (
+                <RiSunLine size={25} />
+              )}
+            </div>
           </div>
         </div>
       </Container>

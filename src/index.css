@@ -426,11 +426,7 @@ a {
   color: #161616;
 }
 .header-switch {
-  display: flex;
-  align-items: center;
-}
-.header-switch p {
-  margin-right: 1rem;
+  cursor: pointer;
 }
 
 #light {
