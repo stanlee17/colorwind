@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ColorsContext, ModalsContext } from '../../App';
 
 // Icons
@@ -82,7 +82,7 @@ const ColorGenerator = ({ refetch }) => {
         </div>
       </div>
 
-      {/* Save Modal */}
+      {/* Modals */}
       <SaveModal closeModals={closeModals} saveModal={modals.saveModal} />
       <ExportModal closeModals={closeModals} exportModal={modals.exportModal} />
     </div>

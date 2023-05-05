@@ -2,6 +2,7 @@ import React, { createContext, useState } from 'react';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import namer from 'color-namer';
 import { Routes, Route } from 'react-router-dom';
+import Modal from 'react-modal';
 
 // Import Components
 import Layout from './components/layout/Layout';
@@ -16,6 +17,8 @@ const queryClient = new QueryClient();
 export const ThemeContext = createContext(null);
 export const ColorsContext = createContext(null);
 export const ModalsContext = createContext(null);
+
+Modal.setAppElement('#root');
 
 function App() {
   // INITIAL: Theme state
@@ -34,7 +37,10 @@ function App() {
   const [modals, setModals] = useState({
     saveModal: false,
     exportModal: false,
+    renameModal: false,
   });
+
+  const [savedColorId, setSavedColorId] = useState('');
 
   // INITIAL: Saved colors state
   const [savedColors, setSavedColors] = useState(() => {
@@ -94,10 +100,23 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <ColorsContext.Provider
-          value={{ colors, setColors, savedColors, setSavedColors, colorName }}
+          value={{
+            colors,
+            savedColors,
+            savedColorId,
+            setColors,
+            setSavedColors,
+            setSavedColorId,
+            colorName,
+          }}
         >
           <ModalsContext.Provider
-            value={{ modals, setModals, closeModals, openModals }}
+            value={{
+              modals,
+              closeModals,
+              openModals,
+              setModals,
+            }}
           >
             <div className="App" id={theme}>
               <Routes>

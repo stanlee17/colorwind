@@ -1,12 +1,9 @@
 import React, { useContext, Fragment } from 'react';
 import { ColorsContext } from '../../App';
 
-// Icons
-import { IoCodeSlash } from 'react-icons/io5';
-import { RiEditBoxLine } from 'react-icons/ri';
-
 // Components
 import ColorDelete from './ColorDelete';
+import ColorEdit from './ColorEdit';
 
 const ColorSaved = () => {
   // ColorsContext
@@ -15,7 +12,6 @@ const ColorSaved = () => {
   // FUNCTION: Select saved palette onClick
   const handleSaved = (id) => {
     const selectedPalette = savedColors.find((color) => color.id === id);
-    console.log(selectedPalette);
 
     setColors(
       colors.map((color, index) => {
@@ -78,8 +74,7 @@ const ColorSaved = () => {
                 <div className="color-saved-content">
                   <p>{color.name}</p>
                   <div className="color-saved-options">
-                    <RiEditBoxLine size={18} />
-                    <IoCodeSlash size={18} />
+                    <ColorEdit id={color.id} />
                     <ColorDelete id={color.id} />
                   </div>
                 </div>

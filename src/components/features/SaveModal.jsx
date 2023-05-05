@@ -9,8 +9,6 @@ import { IoClose } from 'react-icons/io5';
 // Common
 import Message from '../common/Message';
 
-Modal.setAppElement('#root');
-
 const SaveModal = ({ saveModal, closeModals }) => {
   const { colors, savedColors, setSavedColors } = useContext(ColorsContext);
   const inputRef = useRef(null);

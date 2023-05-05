@@ -1,3 +1,8 @@
+// FUNCTION: Capitalize first letter
+export const capitalizeFirstLetter = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 // FUNCTION: Converts RGB to HEX
 export const rgbToHex = (r, g, b) => {
   return (
