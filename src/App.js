@@ -38,6 +38,7 @@ function App() {
   const [modals, setModals] = useState({
     saveModal: false,
     exportModal: false,
+    deleteModal: false,
     renameModal: false,
   });
 

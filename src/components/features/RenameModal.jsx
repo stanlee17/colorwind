@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { ColorsContext } from '../../App';
+import { ColorsContext, ModalsContext } from '../../App';
 import Modal from 'react-modal';
 
 // Icons
@@ -12,9 +12,10 @@ import Message from '../common/Message';
 // Utils
 import { capitalizeFirstLetter } from '../../utils/utils';
 
-const RenameModal = ({ renameModal, closeModals }) => {
+const RenameModal = () => {
   const { savedColors, setSavedColors, savedColorId } =
     useContext(ColorsContext);
+  const { modals, closeModals } = useContext(ModalsContext);
   const inputRef = useRef(null);
   const [name, setName] = useState('');
   const [error, setError] = useState('');
@@ -47,13 +48,13 @@ const RenameModal = ({ renameModal, closeModals }) => {
 
   useEffect(() => {
     if (savedColorId) {
-      setName(savedColors[savedColorId - 1].name);
+      setName(savedColors[savedColors.length - 1].name);
     }
   }, [savedColors, savedColorId]);
 
   return (
     <Modal
-      isOpen={renameModal}
+      isOpen={modals.renameModal}
       onRequestClose={() => closeModals('renameModal')}
       contentLabel="Rename Modal"
       className="save-modal"

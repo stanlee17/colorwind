@@ -5,6 +5,9 @@ import { ColorsContext } from '../../App';
 import ColorDelete from './ColorDelete';
 import ColorEdit from './ColorEdit';
 
+import DeleteModal from './DeleteModal';
+import RenameModal from './RenameModal';
+
 const ColorSaved = () => {
   // ColorsContext
   const { colors, setColors, savedColors } = useContext(ColorsContext);
@@ -87,6 +90,10 @@ const ColorSaved = () => {
           </div>
         )}
       </div>
+
+      {/* Modals */}
+      <DeleteModal />
+      <RenameModal />
     </Fragment>
   );
 };

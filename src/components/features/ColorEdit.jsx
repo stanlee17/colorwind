@@ -4,11 +4,9 @@ import { ColorsContext, ModalsContext } from '../../App';
 // Icons
 import { RiEditBoxLine } from 'react-icons/ri';
 
-import RenameModal from './RenameModal';
-
 const ColorEdit = ({ id }) => {
   const { setSavedColorId } = useContext(ColorsContext);
-  const { modals, openModals, closeModals } = useContext(ModalsContext);
+  const { openModals } = useContext(ModalsContext);
 
   function handleOpen() {
     openModals('renameModal');
@@ -18,7 +16,6 @@ const ColorEdit = ({ id }) => {
   return (
     <Fragment>
       <RiEditBoxLine size={18} onClick={handleOpen} />
-      <RenameModal closeModals={closeModals} renameModal={modals.renameModal} />
     </Fragment>
   );
 };

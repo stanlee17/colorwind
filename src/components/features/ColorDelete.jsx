@@ -1,18 +1,23 @@
-import React, { useContext } from 'react';
-import { ColorsContext } from '../../App';
+import React, { useContext, Fragment } from 'react';
+import { ColorsContext, ModalsContext } from '../../App';
 import { TfiTrash } from 'react-icons/tfi';
 
 const ColorDelete = ({ id }) => {
-  const { setSavedColors } = useContext(ColorsContext);
+  const { setSavedColorId } = useContext(ColorsContext);
+  const { openModals } = useContext(ModalsContext);
 
-  // FUNCTION: Delete saved colors
-  const handleDelete = (id) =>
-    setSavedColors((current) => current.filter((color) => color.id !== id));
+  // FUNCTION: Open Delete Modal
+  function handleOpen() {
+    openModals('deleteModal');
+    setSavedColorId(id);
+  }
 
   return (
-    <div className="color-delete" onClick={() => handleDelete(id)}>
-      <TfiTrash size={18} />
-    </div>
+    <Fragment>
+      <div className="color-delete" onClick={handleOpen}>
+        <TfiTrash size={18} />
+      </div>
+    </Fragment>
   );
 };
 
