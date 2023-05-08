@@ -1,29 +1,28 @@
 import { useQuery } from 'react-query';
 import React, { useEffect, useContext, useCallback } from 'react';
+import { ColorsContext } from '../App';
 import axios from 'axios';
-import { Card, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 // Utils
 import { rgbToHex, colorInput } from '../utils/utils';
 
-// Components
-import ColorGenerator from '../components/features/ColorGenerator';
-import ColorSaved from '../components/features/ColorSaved';
+// Feature Components
+import ColorGenerator from '../components/features/color/ColorGenerator';
+import ColorSaved from '../components/features/color/ColorSaved';
 
-// Common
+// Common Components
 import CardSkeleton from '../components/common/CardSkeleton';
 
 // Services
 import { apiBaseUrl } from '../services/apis';
 
-import { ColorsContext } from '../App';
-
 const Colors = () => {
-  // ColorsContext
+  // useContext: ColorsContext
   const { colors, setColors, savedColors, colorName } =
     useContext(ColorsContext);
 
-  // USEQUERY: Fetches 5 RGB colors
+  // UseQuery: Fetches 5 RGB colors
   const { isLoading, error, refetch } = useQuery({
     queryKey: ['colorData'],
     queryFn: fetchData,
@@ -31,7 +30,7 @@ const Colors = () => {
     onSuccess: (data) => onSuccessFetch(data),
   });
 
-  // FUNCTION: Fetches data
+  // Fetches data
   async function fetchData() {
     const { data } = await axios.post(
       apiBaseUrl,

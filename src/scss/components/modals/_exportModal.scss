@@ -1,4 +1,4 @@
-@use '../abstracts/' as *;
+@use '../../abstracts/' as *;
 
 .export-modal {
   @include modal(500px, 230px, $white-color);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Message = ({ variant, children }) => {
+const Message = ({ variant, children, className }) => {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
@@ -9,7 +9,13 @@ const Message = ({ variant, children }) => {
     }, 5000);
   }, []);
 
-  return show && <div className={`message message-${variant}`}>{children}</div>;
+  return (
+    show && (
+      <div className={`message message-${variant} ${className}`}>
+        {children}
+      </div>
+    )
+  );
 };
 
 export default Message;

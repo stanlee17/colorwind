@@ -1,18 +1,18 @@
 import React, { useContext, Fragment } from 'react';
-import { ColorsContext } from '../../App';
+import { ColorsContext } from '../../../App';
 
 // Components
 import ColorDelete from './ColorDelete';
 import ColorEdit from './ColorEdit';
 
-import DeleteModal from './DeleteModal';
-import RenameModal from './RenameModal';
+import DeleteModal from '../modals/DeleteModal';
+import RenameModal from '../modals/RenameModal';
 
 const ColorSaved = () => {
-  // ColorsContext
+  // useContext: ColorsContext
   const { colors, setColors, savedColors } = useContext(ColorsContext);
 
-  // FUNCTION: Select saved palette onClick
+  // Select saved palette onClick
   const handleSaved = (id) => {
     const selectedPalette = savedColors.find((color) => color.id === id);
 

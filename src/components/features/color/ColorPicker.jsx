@@ -1,11 +1,12 @@
 import React, { useState, Fragment, useContext } from 'react';
 import { ChromePicker } from 'react-color';
+import { ColorsContext } from '../../../App';
+
+// react-icons import
 import { IoOptions } from 'react-icons/io5';
 
-import { ColorsContext } from '../../App';
-
 const ColorPicker = ({ hex, index }) => {
-  // ColorsContext
+  // useContext: ColorsContext
   const { colors, setColors, colorName } = useContext(ColorsContext);
 
   // Initial states

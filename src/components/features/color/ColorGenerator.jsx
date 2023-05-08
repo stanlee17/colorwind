@@ -1,27 +1,27 @@
 import React, { useContext } from 'react';
-import { ColorsContext, ModalsContext } from '../../App';
+import { ColorsContext, ModalsContext } from '../../../App';
 
-// Icons
+// react-icons
 import { RiHeartLine } from 'react-icons/ri';
 import { IoCodeSlash } from 'react-icons/io5';
 
 // Components
-import ColorButton from '../common/ColorButton';
 import ColorLock from './ColorLock';
 import ColorPicker from './ColorPicker';
 import ColorCopy from './ColorCopy';
-import SaveModal from './SaveModal';
-import ExportModal from './ExportModal';
+
+import ColorButton from '../../common/ColorButton';
+
+import SaveModal from '../modals/SaveModal';
+import ExportModal from '../modals/ExportModal';
 
 // Utils
-import { getContrast } from '../../utils/utils';
+import { getContrast } from '../../../utils/utils';
 
 const ColorGenerator = ({ refetch }) => {
-  // useState
-
-  // useContext
+  // useContext: ColorsContext & ModalsContext
   const { colors } = useContext(ColorsContext);
-  const { modals, closeModals, openModals } = useContext(ModalsContext);
+  const { modals, closeModal, openModal } = useContext(ModalsContext);
 
   return (
     <div className="color-generator">
@@ -55,27 +55,28 @@ const ColorGenerator = ({ refetch }) => {
 
       {/* Color Generator Buttons */}
       <div className="color-generator-btn">
+        {/* Color Generator Generate Button */}
         <div className="color-generator-btn-generate">
-          <ColorButton onClick={refetch} className="me-3">
-            Generate
-          </ColorButton>
+          <ColorButton onClick={refetch}>Generate</ColorButton>
           <p className="color-generator-btn-text">
             or <strong>spacebar</strong> to generate new palettes
           </p>
         </div>
+        {/* Color Generator Export & Save Buttons */}
         <div className="color-generator-btn-secondary">
           <ColorButton
             secondary
             icon={<IoCodeSlash />}
-            className="me-3"
-            onClick={() => openModals('exportModal')}
+            className="color-generator-btn-export"
+            onClick={() => openModal('exportModal')}
           >
             Export
           </ColorButton>
           <ColorButton
             secondary
             icon={<RiHeartLine />}
-            onClick={() => openModals('saveModal')}
+            className="color-generator-btn-save"
+            onClick={() => openModal('saveModal')}
           >
             Save
           </ColorButton>
@@ -83,8 +84,8 @@ const ColorGenerator = ({ refetch }) => {
       </div>
 
       {/* Modals */}
-      <SaveModal closeModals={closeModals} saveModal={modals.saveModal} />
-      <ExportModal closeModals={closeModals} exportModal={modals.exportModal} />
+      <SaveModal closeModal={closeModal} saveModal={modals.saveModal} />
+      <ExportModal closeModal={closeModal} exportModal={modals.exportModal} />
     </div>
   );
 };

@@ -1,16 +1,20 @@
 // base imports
 @use './base/base';
 
-// component imports
-@use './components/cardSkeleton';
-@use './components/colorGenerator';
-@use './components/colorDelete';
-@use './components/colorPicker';
-@use './components/colorSaved';
-@use './components/colorbutton';
-@use './components/message';
-@use './components/saveModal';
-@use './components/exportModal';
+// common imports
+@use './common/cardSkeleton';
+@use './common/colorbutton';
+@use './common/message';
+
+// component imports: color
+@use './components/color/colorDelete';
+@use './components/color/colorGenerator';
+@use './components/color/colorPicker';
+@use './components/color/colorSaved';
+
+// component imports: modals
+@use './components/modals/exportModal';
+@use './components/modals/saveModal';
 
 // layout imports
 @use './layout/colors';

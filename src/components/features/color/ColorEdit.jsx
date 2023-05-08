@@ -1,15 +1,16 @@
 import React, { useContext, Fragment } from 'react';
-import { ColorsContext, ModalsContext } from '../../App';
+import { ColorsContext, ModalsContext } from '../../../App';
 
-// Icons
+// react-icons import
 import { RiEditBoxLine } from 'react-icons/ri';
 
 const ColorEdit = ({ id }) => {
+  // useContext: ColorsContext & ModalsContext
   const { setSavedColorId } = useContext(ColorsContext);
-  const { openModals } = useContext(ModalsContext);
+  const { openModal } = useContext(ModalsContext);
 
   function handleOpen() {
-    openModals('renameModal');
+    openModal('renameModal');
     setSavedColorId(id);
   }
 

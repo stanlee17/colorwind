@@ -1,4 +1,4 @@
-@use '../abstracts/' as *;
+@use '../../abstracts/' as *;
 
 .color-generator {
   position: relative;
@@ -49,27 +49,32 @@
 
     &-text {
       display: inline-block;
+      margin-left: 1rem;
+    }
+
+    &-export {
+      margin-right: 1rem;
     }
   }
 
   @include devices(laptop) {
     &-colors {
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0;
     }
 
     &-color {
-      max-width: 250px;
-      min-height: 200px;
+      border-radius: 0;
     }
 
-    &-hex {
-      font-size: 1.2rem;
+    &-color:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
     }
 
-    &-settings {
-      & svg {
-        font-size: 1.2rem;
-      }
+    &-color:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
   }
 
@@ -80,13 +85,19 @@
 
     &-color {
       max-width: 100%;
-      min-height: 250px;
+      min-height: 350px;
     }
 
-    &-settings {
-      & svg {
-        font-size: 1.3rem;
-      }
+    &-color:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 10px;
+    }
+
+    &-color:last-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
     }
 
     &-btn {
@@ -96,8 +107,11 @@
         display: none;
       }
 
-      & div:not(:last-of-type) {
-        margin-bottom: 1rem;
+      &-save {
+      }
+
+      &-export {
+        margin: 1rem 0;
       }
     }
   }

@@ -1,14 +1,16 @@
 import React, { useContext, Fragment } from 'react';
-import { ColorsContext, ModalsContext } from '../../App';
+import { ColorsContext, ModalsContext } from '../../../App';
+
+// react-icons import
 import { TfiTrash } from 'react-icons/tfi';
 
 const ColorDelete = ({ id }) => {
   const { setSavedColorId } = useContext(ColorsContext);
-  const { openModals } = useContext(ModalsContext);
+  const { openModal } = useContext(ModalsContext);
 
   // FUNCTION: Open Delete Modal
   function handleOpen() {
-    openModals('deleteModal');
+    openModal('deleteModal');
     setSavedColorId(id);
   }
 

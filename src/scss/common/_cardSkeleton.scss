@@ -35,6 +35,27 @@
     margin-left: 1rem;
     border-radius: 10px;
   }
+
+  @include devices(laptop) {
+    & .colors {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0;
+    }
+
+    & .color-skeleton {
+      border-radius: 0;
+    }
+
+    & .skeleton-text {
+      display: none;
+    }
+  }
+
+  @include devices(tablet) {
+    & .colors {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .colors-library {
@@ -60,6 +81,13 @@
 
     &-buttons {
       display: flex;
+    }
+  }
+
+  @include devices(tablet) {
+    & .skeleton-saved-colors {
+      grid-template-columns: 1fr;
+      gap: 0;
     }
   }
 }

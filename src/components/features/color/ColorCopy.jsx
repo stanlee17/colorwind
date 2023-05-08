@@ -1,9 +1,13 @@
 import React from 'react';
+
+// react-icons import
 import {
   BsFillClipboard2Fill,
   BsFillClipboard2CheckFill,
 } from 'react-icons/bs';
-import useCopyToClipboard from '../../hooks/useCopyToClipboard';
+
+// import useCopyToClipboard hook
+import useCopyToClipboard from '../../../hooks/useCopyToClipboard';
 
 const ColorCopy = ({ hex }) => {
   // useCopyToClipboard hook

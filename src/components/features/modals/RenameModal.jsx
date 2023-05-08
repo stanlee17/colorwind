@@ -1,21 +1,24 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { ColorsContext, ModalsContext } from '../../App';
+import { ColorsContext, ModalsContext } from '../../../App';
 import Modal from 'react-modal';
 
-// Icons
+// react-icons import
 import { IoClose } from 'react-icons/io5';
 
 // Common
-import Message from '../common/Message';
+import Message from '../../common/Message';
 
 // Utils
-import { capitalizeFirstLetter } from '../../utils/utils';
+import { capitalizeFirstLetter } from '../../../utils/utils';
 
 const RenameModal = () => {
+  // useContext: ColorsContext & ModalsContext
   const { savedColors, setSavedColors, savedColorId } =
     useContext(ColorsContext);
-  const { modals, closeModals } = useContext(ModalsContext);
+  const { modals, closeModal } = useContext(ModalsContext);
+
+  // Initial useRef
   const inputRef = useRef(null);
   const [name, setName] = useState('');
   const [error, setError] = useState('');
@@ -35,7 +38,7 @@ const RenameModal = () => {
     }
 
     setError('');
-    closeModals('renameModal');
+    closeModal('renameModal');
     setSavedColors(
       savedColors.map((color) => {
         if (color.id === savedColorId) {
@@ -55,14 +58,14 @@ const RenameModal = () => {
   return (
     <Modal
       isOpen={modals.renameModal}
-      onRequestClose={() => closeModals('renameModal')}
+      onRequestClose={() => closeModal('renameModal')}
       contentLabel="Rename Modal"
       className="save-modal"
       overlayClassName="save-modal-overlay"
     >
       <div className="save-modal-header">
         <h5>Rename Palette</h5>
-        <IoClose size={25} onClick={() => closeModals('renameModal')} />
+        <IoClose size={25} onClick={() => closeModal('renameModal')} />
       </div>
       <div className="save-modal-content">
         <Form onSubmit={handleSubmit}>

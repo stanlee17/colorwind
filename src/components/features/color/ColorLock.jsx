@@ -1,15 +1,17 @@
 import React, { useContext, useState } from 'react';
+import { ColorsContext } from '../../../App';
+
+// react-icons import
 import { IoLockOpen, IoLockClosed } from 'react-icons/io5';
-import { ColorsContext } from '../../App';
 
 const ColorLock = ({ index }) => {
-  // ColorsContext
+  // useContext: ColorsContext
   const { colors, setColors } = useContext(ColorsContext);
 
-  // INITIAL: Lock state
+  // Initial state
   const [lock, setLock] = useState(false);
 
-  // FUNCTION: Toggles isLocked property (True/False) onClick
+  // Toggles isLocked property (True/False) onClick
   const handleClick = () => {
     setColors(
       colors.map((item) => {

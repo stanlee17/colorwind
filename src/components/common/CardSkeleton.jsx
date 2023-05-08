@@ -9,9 +9,7 @@ const CardSkeleton = ({ savedCards, colorCards }) => {
           {Array(colorCards)
             .fill(0)
             .map((_, i) => (
-              <div className="color" key={i}>
-                <Skeleton height={350} className="color-skeleton" />
-              </div>
+              <Skeleton height={350} className="color-skeleton" key={i} />
             ))}
         </div>
         <div className="colors-button">
@@ -21,7 +19,7 @@ const CardSkeleton = ({ savedCards, colorCards }) => {
           </div>
           <div className="color-button">
             <Skeleton className="skeleton-button" />
-            <div className="ms-4">
+            <div className="ms-3">
               <Skeleton className="skeleton-button" />
             </div>
           </div>

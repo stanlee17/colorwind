@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import Modal from 'react-modal';
 
-// Import Components
+// Import Layout Components
 import Layout from './components/layout/Layout';
 
 // Import Pages
@@ -42,6 +42,7 @@ function App() {
     renameModal: false,
   });
 
+  // INITIAL: Saved Color Id State
   const [savedColorId, setSavedColorId] = useState('');
 
   // INITIAL: Saved colors state
@@ -61,7 +62,7 @@ function App() {
     loadUserSettings();
   }
 
-  // FUNCTION: Load user settings if not it's not on default
+  // Load user settings if not it's not on default
   function loadUserSettings() {
     let userSettings = localStorage.getItem('userSettings');
     if (userSettings) {
@@ -72,12 +73,12 @@ function App() {
     }
   }
 
-  // FUNCTION: Default theme setting
+  // Default theme setting
   function defaultSettings() {
     setTheme('light');
   }
 
-  // FUNCTION: Saves user settings
+  // Saves user settings
   function saveUserSettings() {
     let toggleTheme = theme === 'light' ? 'dark' : 'light';
     localStorage.setItem(
@@ -86,17 +87,18 @@ function App() {
     );
   }
 
-  const openModals = (modalName) => {
-    return setModals({ ...modals, [modalName]: true });
-  };
-
-  const closeModals = (modalName) => {
-    return setModals({ ...modals, [modalName]: false });
-  };
-
+  // Get color name using color-namer library
   function colorName(color) {
     return namer(color, { pick: ['ntc'] }).ntc[0].name;
   }
+
+  const openModal = (modalName) => {
+    return setModals({ ...modals, [modalName]: true });
+  };
+
+  const closeModal = (modalName) => {
+    return setModals({ ...modals, [modalName]: false });
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -115,8 +117,8 @@ function App() {
           <ModalsContext.Provider
             value={{
               modals,
-              closeModals,
-              openModals,
+              closeModal,
+              openModal,
               setModals,
             }}
           >

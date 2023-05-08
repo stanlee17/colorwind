@@ -1,12 +1,14 @@
 import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
 import convert from 'color-convert';
-import ColorButton from '../common/ColorButton';
+import ColorButton from '../../common/ColorButton';
+import { ColorsContext } from '../../../App';
 
-import useCopyToClipboard from '../../hooks/useCopyToClipboard';
+// useCopyToClipboard hook
+import useCopyToClipboard from '../../../hooks/useCopyToClipboard';
 
-// ColorsContext
-import { ColorsContext } from '../../App';
+// Common components
+import Message from '../../common/Message';
 
 // Utils
 import {
@@ -14,9 +16,9 @@ import {
   convertToCss,
   convertToScss,
   convertToJSON,
-} from '../../utils/utils';
+} from '../../../utils/utils';
 
-// Icons
+// react-icons import
 import {
   IoClose,
   IoCopySharp,
@@ -24,15 +26,18 @@ import {
   IoCheckmarkDone,
 } from 'react-icons/io5';
 
-const ExportModal = ({ exportModal, closeModals }) => {
-  const [isCopied, handleCopy] = useCopyToClipboard(3000);
-  // useContext
+const ExportModal = ({ exportModal, closeModal }) => {
+  // useContext: ColorsContext
   const { colors } = useContext(ColorsContext);
 
-  // useState
+  // Initial states
   const [colorCode, setColorCode] = useState('hex');
   const [codeFormat, setCodeFormat] = useState('css');
 
+  // Copy To Clipboard Hook
+  const [isCopied, handleCopy] = useCopyToClipboard(3000);
+
+  // Color formats
   const colorCodes = ['hex', 'rgb', 'hsl', 'cmyk'];
   const codeFormats = ['css', 'scss', 'json', 'raw'];
 
@@ -115,14 +120,14 @@ const ExportModal = ({ exportModal, closeModals }) => {
   return (
     <Modal
       isOpen={exportModal}
-      onRequestClose={() => closeModals('exportModal')}
+      onRequestClose={() => closeModal('exportModal')}
       contentLabel="Save Modal"
       className="export-modal"
       overlayClassName="export-modal-overlay"
     >
       <div className="export-modal-header">
         <h5>Export Palette</h5>
-        <IoClose size={25} onClick={() => closeModals('exportModal')} />
+        <IoClose size={25} onClick={() => closeModal('exportModal')} />
       </div>
       <div className="export-modal-options">
         <div className="color-codes" onClick={handleColorCodes}>
@@ -187,11 +192,16 @@ const ExportModal = ({ exportModal, closeModals }) => {
           </ColorButton>
           <ColorButton
             icon={<IoCheckmarkDone />}
-            onClick={() => closeModals('exportModal')}
+            onClick={() => closeModal('exportModal')}
           >
             Done
           </ColorButton>
         </div>
+        {isCopied && (
+          <Message className="text-center mt-4" variant="error">
+            Copied to Clipboard!
+          </Message>
+        )}
       </div>
     </Modal>
   );
