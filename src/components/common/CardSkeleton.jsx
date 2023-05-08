@@ -19,7 +19,7 @@ const CardSkeleton = ({ savedCards, colorCards }) => {
           </div>
           <div className="color-button">
             <Skeleton className="skeleton-button" />
-            <div className="ms-3">
+            <div className="skeleton-button-wrapper">
               <Skeleton className="skeleton-button" />
             </div>
           </div>
@@ -27,16 +27,12 @@ const CardSkeleton = ({ savedCards, colorCards }) => {
       </div>
       <div className="colors-library">
         <Skeleton className="skeleton-heading" />
-        <div className="skeleton-saved-colors">
+        <div className="saved-colors-skeleton">
           {Array(savedCards)
             .fill(0)
             .map((_, i) => (
               <div className="saved-color" key={i}>
-                <Skeleton
-                  width={300}
-                  height={120}
-                  style={{ borderRadius: '10px', marginBottom: '0.5rem' }}
-                />
+                <Skeleton width={300} className="saved-color-skeleton" />
                 <div className="saved-color-content">
                   <Skeleton
                     width={100}

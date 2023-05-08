@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import Modal from 'react-modal';
 import { ColorsContext } from '../../../App';
 
@@ -36,7 +37,7 @@ const SaveModal = ({ saveModal, closeModal }) => {
     });
 
     const newItems = {
-      id: savedColors.length + 1,
+      id: uuidv4(),
       name,
       colors: items,
     };

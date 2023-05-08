@@ -51,7 +51,10 @@ const RenameModal = () => {
 
   useEffect(() => {
     if (savedColorId) {
-      setName(savedColors[savedColors.length - 1].name);
+      const savedColor = savedColors.find(
+        (savedColor) => savedColor.id === savedColorId
+      );
+      setName(savedColor.name);
     }
   }, [savedColors, savedColorId]);
 

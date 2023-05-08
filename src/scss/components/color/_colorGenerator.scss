@@ -76,6 +76,12 @@
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
     }
+
+    &-btn {
+      &-text {
+        display: none;
+      }
+    }
   }
 
   @include devices(tablet) {
@@ -102,10 +108,6 @@
 
     &-btn {
       display: block;
-
-      &-text {
-        display: none;
-      }
 
       &-save {
       }
