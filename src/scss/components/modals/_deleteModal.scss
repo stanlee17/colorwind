@@ -1,7 +1,7 @@
 @use '../../abstracts/' as *;
 
-.save-modal {
-  @include modal(500px, 230px, $white-color);
+.delete-modal {
+  @include modal(500px, 200px, $white-color);
 
   &-header {
     @include modal-header($black-color, #d8d8d8);
@@ -9,6 +9,10 @@
 
   &-content {
     padding: 1rem 2rem;
+
+    & p {
+      margin-bottom: 1rem;
+    }
   }
 
   &-overlay {
@@ -22,7 +26,7 @@
 
   @include devices(tablet) {
     min-width: 100vw;
-    min-height: 30vh;
+    min-height: 25vh;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     top: unset;

@@ -82,7 +82,7 @@ const ExportModal = ({ exportModal, closeModal }) => {
         converted = `${color};`;
         break;
       case 'rgb':
-        converted = `(${convert.hex.rgb(color).join(', ')});`;
+        converted = `rgb(${convert.hex.rgb(color).join(', ')});`;
         break;
       case 'hsl':
         const hslArr = convert.hex.hsl(color);
@@ -185,7 +185,7 @@ const ExportModal = ({ exportModal, closeModal }) => {
           <ColorButton
             secondary
             icon={<IoCopyOutline />}
-            className="me-3"
+            className="copy-all"
             onClick={handleCopyAll}
           >
             Copy All

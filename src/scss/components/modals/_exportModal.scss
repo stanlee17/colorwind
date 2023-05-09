@@ -44,6 +44,10 @@
   &-buttons {
     text-align: end;
     padding-top: 1.5rem;
+
+    & .copy-all {
+      margin-right: 1rem;
+    }
   }
 
   &-content {
@@ -59,6 +63,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     & svg {
       cursor: pointer;
     }
@@ -76,5 +81,28 @@
 
   &-overlay {
     @include modal-overlay;
+  }
+
+  @include devices(tablet) {
+    min-width: 100vw;
+    min-height: 25vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    top: unset;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-right: 0;
+    transform: translate(0%, 0%);
+
+    &-buttons {
+      & .copy-all {
+        margin: 1rem 0;
+      }
+    }
+
+    &-content {
+      padding: 2rem;
+    }
   }
 }

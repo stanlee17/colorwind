@@ -36,6 +36,10 @@ a {
   flex: 1;
 }
 
+.form-control {
+  border-radius: 100px;
+}
+
 .card-skeleton {
   margin-bottom: 2.5rem;
 }
@@ -370,7 +374,79 @@ a {
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
   }
 }
+.delete-modal {
+  outline: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  min-width: 500px;
+  min-height: 200px;
+}
+.delete-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8d8d8;
+  padding: 1.2rem 2rem;
+}
+.delete-modal-header h5 {
+  margin: 0;
+}
+.delete-modal-header svg {
+  color: #161616;
+  cursor: pointer;
+}
+.delete-modal-content {
+  padding: 1rem 2rem;
+}
+.delete-modal-content p {
+  margin-bottom: 1rem;
+}
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.delete-modal-button {
+  padding: 0.5rem 2.5rem;
+  border-radius: 100px;
+}
+@media only screen and (max-width: 860px) {
+  .delete-modal {
+    min-width: 100vw;
+    min-height: 25vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    top: unset;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-right: 0;
+    transform: translate(0%, 0%);
+  }
+  .delete-modal-content {
+    padding: 2rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .delete-modal-button {
+    min-width: 100%;
+  }
+}
+
 .export-modal {
+  outline: 0;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -432,6 +508,9 @@ a {
   text-align: end;
   padding-top: 1.5rem;
 }
+.export-modal-buttons .copy-all {
+  margin-right: 1rem;
+}
 .export-modal-content {
   padding: 2rem;
 }
@@ -463,8 +542,97 @@ a {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+@media only screen and (max-width: 860px) {
+  .export-modal {
+    min-width: 100vw;
+    min-height: 25vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    top: unset;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-right: 0;
+    transform: translate(0%, 0%);
+  }
+  .export-modal-buttons .copy-all {
+    margin: 1rem 0;
+  }
+  .export-modal-content {
+    padding: 2rem;
+  }
+}
+
+.rename-modal {
+  outline: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  min-width: 500px;
+  min-height: 230px;
+}
+.rename-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8d8d8;
+  padding: 1.2rem 2rem;
+}
+.rename-modal-header h5 {
+  margin: 0;
+}
+.rename-modal-header svg {
+  color: #161616;
+  cursor: pointer;
+}
+.rename-modal-content {
+  padding: 1rem 2rem;
+}
+.rename-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.rename-modal-button {
+  padding: 0.5rem 2.5rem;
+  border-radius: 100px;
+}
+@media only screen and (max-width: 860px) {
+  .rename-modal {
+    min-width: 100vw;
+    min-height: 30vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    top: unset;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-right: 0;
+    transform: translate(0%, 0%);
+  }
+  .rename-modal-content {
+    padding: 2rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .rename-modal-button {
+    min-width: 100%;
+  }
+}
 
 .save-modal {
+  outline: 0;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -503,6 +671,32 @@ a {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
+}
+.save-modal-button {
+  padding: 0.5rem 2.5rem;
+  border-radius: 100px;
+}
+@media only screen and (max-width: 860px) {
+  .save-modal {
+    min-width: 100vw;
+    min-height: 30vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    top: unset;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-right: 0;
+    transform: translate(0%, 0%);
+  }
+  .save-modal-content {
+    padding: 2rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .save-modal-button {
+    min-width: 100%;
+  }
 }
 
 .footer {

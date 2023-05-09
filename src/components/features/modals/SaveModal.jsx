@@ -72,7 +72,7 @@ const SaveModal = ({ saveModal, closeModal }) => {
             />
             {error && <Message variant="error">{error}</Message>}
           </Form.Group>
-          <Button variant="success" onClick={handleSubmit}>
+          <Button className="save-modal-button" onClick={handleSubmit}>
             Save
           </Button>
         </Form>

@@ -13,7 +13,9 @@
 @use './components/color/colorSaved';
 
 // component imports: modals
+@use './components/modals/deleteModal';
 @use './components/modals/exportModal';
+@use './components/modals/renameModal';
 @use './components/modals/saveModal';
 
 // layout imports

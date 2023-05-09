@@ -21,16 +21,20 @@ const DeleteModal = () => {
       isOpen={modals.deleteModal}
       onRequestClose={() => closeModal('deleteModal')}
       contentLabel="Delete Modal"
-      className="export-modal"
-      overlayClassName="export-modal-overlay"
+      className="delete-modal"
+      overlayClassName="delete-modal-overlay"
     >
-      <div className="export-modal-header">
+      <div className="delete-modal-header">
         <h5>Delete Palette</h5>
         <IoClose size={25} onClick={() => closeModal('deleteModal')} />
       </div>
-      <div className="export-modal-content">
-        <p>Are you sure you want to delete this palette?</p>
-        <Button variant="danger" onClick={() => handleDelete(savedColorId)}>
+      <div className="delete-modal-content">
+        <p>Are you sure you want to delete this color palette?</p>
+        <Button
+          variant="danger"
+          className="delete-modal-button"
+          onClick={() => handleDelete(savedColorId)}
+        >
           Delete
         </Button>
       </div>

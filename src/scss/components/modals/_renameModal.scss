@@ -1,6 +1,6 @@
 @use '../../abstracts/' as *;
 
-.save-modal {
+.rename-modal {
   @include modal(500px, 230px, $white-color);
 
   &-header {

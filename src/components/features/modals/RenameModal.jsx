@@ -63,14 +63,14 @@ const RenameModal = () => {
       isOpen={modals.renameModal}
       onRequestClose={() => closeModal('renameModal')}
       contentLabel="Rename Modal"
-      className="save-modal"
-      overlayClassName="save-modal-overlay"
+      className="rename-modal"
+      overlayClassName="rename-modal-overlay"
     >
-      <div className="save-modal-header">
+      <div className="rename-modal-header">
         <h5>Rename Palette</h5>
         <IoClose size={25} onClick={() => closeModal('renameModal')} />
       </div>
-      <div className="save-modal-content">
+      <div className="rename-modal-content">
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label>Rename</Form.Label>
@@ -84,8 +84,8 @@ const RenameModal = () => {
             />
             {error && <Message variant="error">{error}</Message>}
           </Form.Group>
-          <Button variant="success" onClick={handleSubmit}>
-            Rename
+          <Button className="rename-modal-button" onClick={handleSubmit}>
+            Save
           </Button>
         </Form>
       </div>

@@ -19,6 +19,7 @@
 }
 
 @mixin modal($width, $height, $bgColor) {
+  outline: 0;
   display: flex;
   flex-direction: column;
   position: absolute;
