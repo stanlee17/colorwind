@@ -8,7 +8,7 @@
   }
 
   &-content {
-    padding: 1rem 2rem;
+    padding: 2rem;
 
     & p {
       margin-bottom: 1rem;
@@ -35,15 +35,26 @@
     left: 0;
     margin-right: 0;
     transform: translate(0%, 0%);
-
-    &-content {
-      padding: 2rem;
-    }
   }
 
   @include devices(mobile) {
+    &-content {
+      & p {
+        text-align: center;
+      }
+    }
     &-button {
       min-width: 100%;
+    }
+  }
+}
+
+.dark .delete-modal {
+  &-header {
+    border-bottom: 1px solid #2c2c2c;
+
+    & svg {
+      color: #fff;
     }
   }
 }

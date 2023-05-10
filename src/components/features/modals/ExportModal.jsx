@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
 import convert from 'color-convert';
 import ColorButton from '../../common/ColorButton';
-import { ColorsContext } from '../../../App';
+import { ColorsContext, ThemeContext } from '../../../App';
 
 // useCopyToClipboard hook
 import useCopyToClipboard from '../../../hooks/useCopyToClipboard';
@@ -26,9 +26,16 @@ import {
   IoCheckmarkDone,
 } from 'react-icons/io5';
 
+const style = {
+  modal: {
+    content: { background: '#171717', color: '#fff' },
+  },
+};
+
 const ExportModal = ({ exportModal, closeModal }) => {
   // useContext: ColorsContext
   const { colors } = useContext(ColorsContext);
+  const { theme } = useContext(ThemeContext);
 
   // Initial states
   const [colorCode, setColorCode] = useState('hex');
@@ -121,16 +128,17 @@ const ExportModal = ({ exportModal, closeModal }) => {
     <Modal
       isOpen={exportModal}
       onRequestClose={() => closeModal('exportModal')}
-      contentLabel="Save Modal"
-      className="export-modal"
+      contentLabel="Export Modal"
+      className={`export-modal ${theme}`}
+      style={theme === 'dark' && style.modal}
       overlayClassName="export-modal-overlay"
     >
-      <div className="export-modal-header">
+      <div className={`export-modal-header ${theme}`}>
         <h5>Export Palette</h5>
         <IoClose size={25} onClick={() => closeModal('exportModal')} />
       </div>
-      <div className="export-modal-options">
-        <div className="color-codes" onClick={handleColorCodes}>
+      <div className={`export-modal-options ${theme}`}>
+        <div className={`color-codes ${theme}`} onClick={handleColorCodes}>
           {colorCodes.map((color, index) => {
             return (
               <div
@@ -143,7 +151,7 @@ const ExportModal = ({ exportModal, closeModal }) => {
             );
           })}
         </div>
-        <div className="code-format" onClick={handleCodeFormat}>
+        <div className={`code-format ${theme}`} onClick={handleCodeFormat}>
           {codeFormats.map((format, index) => {
             return (
               <div
@@ -157,8 +165,8 @@ const ExportModal = ({ exportModal, closeModal }) => {
           })}
         </div>
       </div>
-      <div className="export-modal-content">
-        <div className="export-modal-colors">
+      <div className={`export-modal-content ${theme}`}>
+        <div className={`export-modal-colors ${theme}`}>
           {colors.map((color, index) => {
             const colorStyles = {
               backgroundColor: color.color,
@@ -181,7 +189,7 @@ const ExportModal = ({ exportModal, closeModal }) => {
             );
           })}
         </div>
-        <div className="export-modal-buttons">
+        <div className={`export-modal-buttons ${theme}`}>
           <ColorButton
             secondary
             icon={<IoCopyOutline />}

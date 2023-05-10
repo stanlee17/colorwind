@@ -122,7 +122,10 @@ function App() {
               setModals,
             }}
           >
-            <SkeletonTheme baseColor="#E8E8E8" highlightColor="#F8F8F8">
+            <SkeletonTheme
+              baseColor={theme === 'light' ? '#E8E8E8' : '#262626'}
+              highlightColor={theme === 'light' ? '#F8F8F8' : '#343434'}
+            >
               <div className="App" id={theme}>
                 <Routes>
                   <Route path="/" element={<Layout />}>

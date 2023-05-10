@@ -1,10 +1,20 @@
 @use '../abstracts/' as *;
 
 #light {
+  transition: all 0.3s;
   background-color: $white-color;
 }
 
+#light .header {
+  transition: all 0.3s;
+}
+
+#light .footer {
+  transition: all 0.3s;
+}
+
 #dark {
+  transition: all 0.3s;
   background-color: $dark-mode-bg;
   color: $white-color;
 }
@@ -16,23 +26,19 @@
 
 // Button
 #dark .color-btn {
-  background-color: $primary-color-200;
+  background-color: $primary-color-dark;
   color: $black-color;
 
   &-secondary {
-    border: 1px solid $secondary-color-200;
-    color: $secondary-color-200;
+    border: 1px solid $secondary-color-dark;
+    color: $secondary-color-dark;
   }
-}
-
-// Color Delete
-#dark .color-delete {
-  color: $red-color-300;
 }
 
 // Header
 #dark .header {
-  background-color: $dark-mode-overlay;
+  transition: all 0.3s;
+  background-color: $dark-mode-bg;
   color: $white-color;
   border-bottom: none;
 
@@ -50,5 +56,5 @@
 
 // Footer
 #dark .footer {
-  background-color: $dark-mode-bg;
+  transition: all 0.3s;
 }

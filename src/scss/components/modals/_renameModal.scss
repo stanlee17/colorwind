@@ -31,15 +31,21 @@
     left: 0;
     margin-right: 0;
     transform: translate(0%, 0%);
-
-    &-content {
-      padding: 2rem;
-    }
   }
 
   @include devices(mobile) {
     &-button {
       min-width: 100%;
+    }
+  }
+}
+
+.dark .rename-modal {
+  &-header {
+    border-bottom: 1px solid #2c2c2c;
+
+    & svg {
+      color: #fff;
     }
   }
 }

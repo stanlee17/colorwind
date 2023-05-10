@@ -2,7 +2,7 @@ import React, { useContext, useState, useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import Modal from 'react-modal';
-import { ColorsContext } from '../../../App';
+import { ColorsContext, ThemeContext } from '../../../App';
 
 // Icons
 import { IoClose } from 'react-icons/io5';
@@ -10,8 +10,15 @@ import { IoClose } from 'react-icons/io5';
 // Common
 import Message from '../../common/Message';
 
+const style = {
+  modal: {
+    content: { background: '#171717', color: '#fff' },
+  },
+};
+
 const SaveModal = ({ saveModal, closeModal }) => {
   const { colors, savedColors, setSavedColors } = useContext(ColorsContext);
+  const { theme } = useContext(ThemeContext);
   const inputRef = useRef(null);
   const [name, setName] = useState('');
   const [error, setError] = useState('');
@@ -52,10 +59,11 @@ const SaveModal = ({ saveModal, closeModal }) => {
       isOpen={saveModal}
       onRequestClose={() => closeModal('saveModal')}
       contentLabel="Save Modal"
-      className="save-modal"
+      className={`save-modal ${theme}`}
+      style={theme === 'dark' && style.modal}
       overlayClassName="save-modal-overlay"
     >
-      <div className="save-modal-header">
+      <div className={`save-modal-header ${theme}`}>
         <h5>Save Palette</h5>
         <IoClose size={25} onClick={() => closeModal('saveModal')} />
       </div>

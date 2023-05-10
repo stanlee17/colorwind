@@ -106,3 +106,26 @@
     }
   }
 }
+
+.dark .export-modal {
+  &-header {
+    border-bottom: 1px solid #2c2c2c;
+
+    & svg {
+      color: #fff;
+    }
+  }
+
+  &-options {
+    & .code-format {
+      border-bottom: 1px solid #2c2c2c;
+    }
+  }
+
+  &-buttons {
+    & .copy-all {
+      color: $secondary-color-dark;
+      border: 1px solid $secondary-color-dark;
+    }
+  }
+}

@@ -143,7 +143,7 @@ a {
 
 .color-btn {
   color: #ffffff;
-  background-color: #38bdf8;
+  background-color: #14aafc;
   padding: 0.7rem 3rem;
   font-size: 1.1rem;
   border-radius: 2rem;
@@ -160,7 +160,7 @@ a {
   transform: scale(1.05);
 }
 .color-btn:active {
-  background-color: #38bdf8;
+  background-color: #14aafc;
 }
 @media only screen and (max-width: 860px) {
   .color-btn {
@@ -405,7 +405,7 @@ a {
   cursor: pointer;
 }
 .delete-modal-content {
-  padding: 1rem 2rem;
+  padding: 2rem;
 }
 .delete-modal-content p {
   margin-bottom: 1rem;
@@ -435,14 +435,21 @@ a {
     margin-right: 0;
     transform: translate(0%, 0%);
   }
-  .delete-modal-content {
-    padding: 2rem;
-  }
 }
 @media only screen and (max-width: 500px) {
+  .delete-modal-content p {
+    text-align: center;
+  }
   .delete-modal-button {
     min-width: 100%;
   }
+}
+
+.dark .delete-modal-header {
+  border-bottom: 1px solid #2c2c2c;
+}
+.dark .delete-modal-header svg {
+  color: #fff;
 }
 
 .export-modal {
@@ -563,6 +570,20 @@ a {
   }
 }
 
+.dark .export-modal-header {
+  border-bottom: 1px solid #2c2c2c;
+}
+.dark .export-modal-header svg {
+  color: #fff;
+}
+.dark .export-modal-options .code-format {
+  border-bottom: 1px solid #2c2c2c;
+}
+.dark .export-modal-buttons .copy-all {
+  color: #fef08a;
+  border: 1px solid #fef08a;
+}
+
 .rename-modal {
   outline: 0;
   display: flex;
@@ -621,14 +642,18 @@ a {
     margin-right: 0;
     transform: translate(0%, 0%);
   }
-  .rename-modal-content {
-    padding: 2rem;
-  }
 }
 @media only screen and (max-width: 500px) {
   .rename-modal-button {
     min-width: 100%;
   }
+}
+
+.dark .rename-modal-header {
+  border-bottom: 1px solid #2c2c2c;
+}
+.dark .rename-modal-header svg {
+  color: #fff;
 }
 
 .save-modal {
@@ -699,6 +724,13 @@ a {
   }
 }
 
+.dark .save-modal-header {
+  border-bottom: 1px solid #2c2c2c;
+}
+.dark .save-modal-header svg {
+  color: #fff;
+}
+
 .footer {
   padding: 1.2rem;
   text-align: center;
@@ -730,10 +762,20 @@ a {
 }
 
 #light {
+  transition: all 0.3s;
   background-color: #ffffff;
 }
 
+#light .header {
+  transition: all 0.3s;
+}
+
+#light .footer {
+  transition: all 0.3s;
+}
+
 #dark {
+  transition: all 0.3s;
   background-color: #121212;
   color: #ffffff;
 }
@@ -751,12 +793,9 @@ a {
   color: #fef08a;
 }
 
-#dark .color-delete {
-  color: #fca5a5;
-}
-
 #dark .header {
-  background-color: #1f1f1f;
+  transition: all 0.3s;
+  background-color: #121212;
   color: #ffffff;
   border-bottom: none;
 }
@@ -769,5 +808,5 @@ a {
 }
 
 #dark .footer {
-  background-color: #121212;
+  transition: all 0.3s;
 }
