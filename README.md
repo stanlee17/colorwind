@@ -8,7 +8,7 @@
 - [Create React App](https://github.com/facebook/create-react-app)
 - [Color Namer](https://github.com/colorjs/color-namer)
 - [Color Convert](https://github.com/Qix-/color-convert)
-- [React Color](https://github.com/casesandberg/react-color)
+- [Colormind API](https://github.com/dmi3kno/colormind)
 - [Sass/Scss](https://github.com/sass/sass)
 
 ## Setup
