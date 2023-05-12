@@ -1,6 +1,6 @@
 # Colorwind
 
-> Colorwind is a color generator application made to allow users and/or developers to find matching color palettes for their side/business projects or other uses.
+> Colorwind is a color generator app made to allow users and/or developers to find matching color palettes for their side/business projects or other uses.
 
 ## Built with a bunch of things, but to name a few:
 
