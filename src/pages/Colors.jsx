@@ -33,7 +33,7 @@ const Colors = () => {
   // Fetches data
   async function fetchData() {
     const { data } = await axios.post(
-      apiBaseUrl,
+      '/api/',
       JSON.stringify({
         model: 'default',
         input: colorInput(colors),

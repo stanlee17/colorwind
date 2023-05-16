@@ -1,1 +1,1 @@
-export const apiBaseUrl = 'http://colormind.io/api/';
+export const apiBaseUrl = '/api/';
