@@ -61,7 +61,9 @@ const RenameModal = () => {
       const savedColor = savedColors.find(
         (savedColor) => savedColor.id === savedColorId
       );
-      setName(savedColor.name);
+      if (savedColor) {
+        setName(savedColor.name);
+      }
     }
   }, [savedColors, savedColorId]);
 
